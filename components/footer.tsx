@@ -9,8 +9,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12">
           <div className="lg:col-span-4">
             <div className="mb-6">
-              <div className="relative h-12 w-48 bg-white/10 backdrop-blur-sm p-2 rounded-lg">
-                <Image src="/images/logo.png" alt="EasyOurTour" fill className="object-contain" />
+              <div className="relative h-16 w-64">
+                <Image
+                  src="/images/logo.png"
+                  alt="EasyOurTour"
+                  fill
+                  className="object-contain object-left brightness-0 invert"
+                />
               </div>
             </div>
             <p className="mb-6 text-gray-400 max-w-md">
@@ -22,17 +27,9 @@ export default function Footer() {
                 <Facebook size={20} />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-brand-teal transition-colors">
+              <Link href="https://www.instagram.com/easyourtourr" target="_blank" className="text-gray-400 hover:text-brand-teal transition-colors">
                 <Instagram size={20} />
                 <span className="sr-only">Instagram</span>
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-brand-teal transition-colors">
-                <Twitter size={20} />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-brand-teal transition-colors">
-                <Youtube size={20} />
-                <span className="sr-only">YouTube</span>
               </Link>
             </div>
           </div>
@@ -51,8 +48,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/experiences" className="text-gray-400 hover:text-brand-teal transition-colors">
-                  Experiences
+                <Link href="/services" className="text-gray-400 hover:text-brand-teal transition-colors">
+                  Services
                 </Link>
               </li>
               <li>
@@ -78,12 +75,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/hotels" className="text-gray-400 hover:text-brand-teal transition-colors">
-                  Hotel Reservations
+                Visa Assistance
                 </Link>
               </li>
               <li>
                 <Link href="/visa" className="text-gray-400 hover:text-brand-teal transition-colors">
-                  Visa Assistance
+                  Tour Packages
                 </Link>
               </li>
               <li>
@@ -93,7 +90,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/transportation" className="text-gray-400 hover:text-brand-teal transition-colors">
-                  Transportation
+                Hotel Reservations
                 </Link>
               </li>
             </ul>
@@ -105,18 +102,22 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 text-brand-teal mt-1" />
                 <span className="text-gray-400">
-                  123 Travel Street, Suite 100
+                  Vikas Naka
                   <br />
-                  New York, NY 10001
+                  Dombivli East, Mumbai, Maharashtra, India 421203
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 text-brand-teal" />
-                <span className="text-gray-400">+1 (888) 123-4567</span>
+                <span className="text-gray-400">
+                  <a href="tel:+918652681571">+91 86526-81571</a>
+                </span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 text-brand-teal" />
-                <span className="text-gray-400">info@easyourtour.com</span>
+                <span className="text-gray-400">
+                  <a href="mailto:info@easyourtour.com">info@easyourtour.com</a>
+                </span>
               </li>
             </ul>
           </div>

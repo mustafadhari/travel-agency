@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Compass, Briefcase, Utensils, Camera, Mountain, Plane } from "lucide-react"
+import { Compass, Briefcase, Utensils, Camera, Mountain, Plane, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -24,40 +24,34 @@ export default function ExperienceShowcase() {
 
   const experiences = [
     {
-      title: "Adventure Tours",
-      description: "Thrilling experiences for the bold traveler",
-      icon: Mountain,
-      color: "bg-brand-navy text-white",
-    },
-    {
-      title: "Cultural Immersion",
-      description: "Connect with local traditions and heritage",
-      icon: Compass,
-      color: "bg-brand-teal text-white",
-    },
-    {
-      title: "Luxury Getaways",
-      description: "Premium experiences with exceptional service",
-      icon: Briefcase,
-      color: "bg-brand-navy text-white",
-    },
-    {
-      title: "Culinary Journeys",
-      description: "Taste authentic flavors from around the world",
-      icon: Utensils,
-      color: "bg-brand-teal text-white",
-    },
-    {
-      title: "Photography Tours",
-      description: "Capture stunning landscapes and moments",
-      icon: Camera,
-      color: "bg-brand-navy text-white",
-    },
-    {
-      title: "Island Hopping",
-      description: "Explore multiple destinations in one trip",
+      title: "Flight Tickets",
+      description: "Best fares and flexible options across global airlines",
       icon: Plane,
+      color: "bg-brand-navy text-white",
+    },
+    {
+      title: "Hotel Bookings",
+      description: "Handpicked stays from boutique to luxury resorts",
+      icon: Briefcase,
       color: "bg-brand-teal text-white",
+    },
+    {
+      title: "Visa Assistance",
+      description: "End-to-end documentation and application support",
+      icon: Compass,
+      color: "bg-brand-navy text-white",
+    },
+    {
+      title: "Tour Packages",
+      description: "Curated itineraries tailored to your travel style",
+      icon: Mountain,
+      color: "bg-brand-teal text-white",
+    },
+    {
+      title: "Travel Insurance",
+      description: "Comprehensive coverage for a worry-free journey",
+      icon: ShieldCheck,
+      color: "bg-brand-navy text-white",
     },
   ]
 
@@ -110,8 +104,8 @@ export default function ExperienceShowcase() {
           <motion.div style={{ y }} className="relative">
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/placeholder.svg?height=800&width=600"
-                alt="Travel experiences"
+                src="/images/traveler.jpeg?height=800&width=600"
+                alt="Travel services"
                 width={600}
                 height={800}
                 className="w-full h-auto object-cover"
@@ -119,8 +113,8 @@ export default function ExperienceShowcase() {
             </div>
             <div className="absolute -bottom-6 -right-6 w-2/3 h-2/3 rounded-2xl overflow-hidden border-8 border-white dark:border-gray-900 shadow-xl">
               <Image
-                src="/placeholder.svg?height=400&width=300"
-                alt="Travel experiences detail"
+                src="/images/greece2.jpeg?height=400&width=300"
+                alt="Travel services detail"
                 width={300}
                 height={400}
                 className="w-full h-full object-cover"
@@ -137,12 +131,12 @@ export default function ExperienceShowcase() {
                 animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Unforgettable Travel Experiences</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">Unforgettable Travel Services</h2>
                 <p className="text-muted-foreground mb-6">
-                  We curate exceptional travel experiences tailored to your preferences. From adrenaline-pumping
+                  We curate exceptional travel services tailored to your preferences. From adrenaline-pumping
                   adventures to serene retreats, discover the world your way.
                 </p>
-                <Button className="bg-brand-teal hover:bg-brand-navy">Explore Experiences</Button>
+                <Button className="bg-brand-teal hover:bg-brand-navy">Explore Services</Button>
               </motion.div>
             </div>
 
@@ -150,7 +144,9 @@ export default function ExperienceShowcase() {
               {experiences.map((experience, index) => (
                 <motion.div
                   key={experience.title}
-                  ref={(el) => (experienceRefs.current[index] = el)}
+                  ref={(el) => {
+                    experienceRefs.current[index] = el
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={experienceInView[index] ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}

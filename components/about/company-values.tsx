@@ -4,37 +4,34 @@ import { Heart, Globe, Sparkles, Users, ShieldCheck, Leaf } from "lucide-react"
 export default function CompanyValues() {
   const values = [
     {
-      icon: <Heart className="h-8 w-8 text-amber-600" />,
-      title: "Passion",
-      description: "We're passionate about travel and dedicated to sharing the world's wonders with our clients.",
+      title: "Passion for Travel",
+      description: "We're passionate about creating unforgettable travel experiences that inspire and delight our customers.",
+      icon: <Heart className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <Globe className="h-8 w-8 text-amber-600" />,
-      title: "Global Perspective",
-      description: "We embrace diversity and celebrate the unique cultures, traditions, and landscapes of our world.",
+      title: "Global Expertise",
+      description: "Our team of travel experts has extensive knowledge of destinations worldwide, ensuring you get the best advice.",
+      icon: <Globe className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <Sparkles className="h-8 w-8 text-amber-600" />,
-      title: "Excellence",
-      description:
-        "We strive for excellence in every aspect of our service, from the first inquiry to the journey home.",
+      title: "Quality Service",
+      description: "We maintain the highest standards of service quality, from initial consultation to post-trip support.",
+      icon: <Sparkles className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <Users className="h-8 w-8 text-amber-600" />,
-      title: "Personalization",
-      description:
-        "We believe that every traveler is unique, and every journey should reflect their individual preferences.",
+      title: "Customer Focus",
+      description: "Your satisfaction is our priority. We listen to your needs and tailor experiences to exceed expectations.",
+      icon: <Users className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <ShieldCheck className="h-8 w-8 text-amber-600" />,
-      title: "Integrity",
-      description: "We operate with honesty, transparency, and ethical practices in all our business dealings.",
+      title: "Trust & Reliability",
+      description: "Build lasting relationships based on trust, transparency, and reliable service delivery.",
+      icon: <ShieldCheck className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <Leaf className="h-8 w-8 text-amber-600" />,
-      title: "Sustainability",
-      description:
-        "We're committed to responsible travel practices that respect and preserve the environments and communities we visit.",
+      title: "Sustainable Travel",
+      description: "We promote responsible tourism practices that benefit local communities and preserve natural environments.",
+      icon: <Leaf className="h-8 w-8 text-brand-teal" />,
     },
   ]
 

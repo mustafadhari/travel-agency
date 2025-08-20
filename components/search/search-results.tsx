@@ -1,211 +1,130 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
 import Link from "next/link"
-import { Card } from "@/components/ui/card"
+import Image from "next/image"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { MapPin, Calendar, Users, Star, Filter } from "lucide-react"
-import { searchTours } from "@/lib/search"
-import { Skeleton } from "@/components/ui/skeleton"
+import { MapPin, Calendar, Users, Star } from "lucide-react"
+import { searchTours } from "@/lib/tours"
 
 interface SearchResultsProps {
-  destination: string
-  date: string
-  travelers: string
+  destination?: string
+  date?: string
   duration?: string
+  travelers?: string
+  adults?: string
+  children?: string
 }
 
-export default function SearchResults({ destination, date, travelers, duration }: SearchResultsProps) {
-  const [results, setResults] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
-  const [sortBy, setSortBy] = useState("rating")
-  const [pagination, setPagination] = useState<any>(null)
-
-  useEffect(() => {
-    const fetchResults = async () => {
-      setLoading(true)
-      try {
-        const searchParams = {
-          destination,
-          date,
-          duration,
-          adults: Number.parseInt(travelers) || 1,
-          children: 0,
-          page: 1,
-          limit: 10,
-        }
-
-        const data = await searchTours(searchParams)
-        setResults(data.tours || [])
-        setPagination(data.pagination)
-      } catch (error) {
-        console.error("Error fetching search results:", error)
-        setResults([])
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchResults()
-  }, [destination, date, travelers, duration])
-
-  const sortResults = (results: any[]) => {
-    switch (sortBy) {
-      case "price-low":
-        return [...results].sort((a, b) => a.price - b.price)
-      case "price-high":
-        return [...results].sort((a, b) => b.price - a.price)
-      case "rating":
-        return [...results].sort((a, b) => b.rating - a.rating)
-      case "duration":
-        return [...results].sort((a, b) => a.duration_days - b.duration_days)
-      default:
-        return [...results].sort((a, b) => b.rating - a.rating)
-    }
-  }
-
-  const sortedResults = sortResults(results)
-
-  if (loading) {
-    return (
-      <div className="space-y-6">
-        {[1, 2, 3].map((i) => (
-          <Card key={i} className="overflow-hidden">
-            <div className="flex flex-col md:flex-row">
-              <div className="md:w-1/3 h-48 md:h-auto">
-                <Skeleton className="h-full w-full" />
-              </div>
-              <div className="md:w-2/3 p-6 space-y-4">
-                <Skeleton className="h-8 w-3/4" />
-                <Skeleton className="h-4 w-1/4" />
-                <Skeleton className="h-20 w-full" />
-                <div className="flex justify-between">
-                  <Skeleton className="h-6 w-1/3" />
-                  <Skeleton className="h-10 w-1/4" />
-                </div>
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
-    )
-  }
-
-  if (sortedResults.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <div className="mb-4 text-brand-teal">
-          <Filter className="h-12 w-12 mx-auto" />
-        </div>
-        <h3 className="text-2xl font-bold mb-2">No tours found</h3>
-        <p className="text-muted-foreground mb-6">
-          We couldn't find any tours matching your search criteria. Try adjusting your filters or search for a different
-          destination.
-        </p>
-        <Link href="/">
-          <Button className="bg-brand-teal hover:bg-brand-navy">Return to Homepage</Button>
-        </Link>
-      </div>
-    )
-  }
+export default function SearchResults({
+  destination = "",
+  date = "",
+  duration = "",
+  travelers = "",
+  adults = "1",
+  children = "0",
+}: SearchResultsProps) {
+  // Use the centralized search function
+  const results = searchTours(destination)
 
   return (
     <div>
+      {/* Search Summary */}
+      <div className="mb-6 p-4 bg-muted rounded-lg">
+        <h3 className="font-semibold mb-2">Search Results</h3>
+        <div className="text-sm text-muted-foreground">
+          {destination && <span>Destination: {destination}</span>}
+          {date && <span className="ml-4">Date: {date}</span>}
+          {duration && <span className="ml-4">Duration: {duration}</span>}
+          {adults && <span className="ml-4">Adults: {adults}</span>}
+          {children && <span className="ml-4">Children: {children}</span>}
+        </div>
+      </div>
+
+      {/* Results Count */}
       <div className="flex justify-between items-center mb-6">
         <p className="text-muted-foreground">
-          Showing {sortedResults.length} of {pagination?.total || sortedResults.length} results
+          Found {results.length} tour{results.length !== 1 ? "s" : ""}
         </p>
         <div className="flex items-center gap-2">
           <span className="text-sm">Sort by:</span>
-          <select className="border rounded-md p-1 text-sm" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="rating">Rating</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="duration">Duration</option>
+          <select className="border rounded-md p-1 text-sm">
+            <option>Relevance</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Duration</option>
+            <option>Rating</option>
           </select>
         </div>
       </div>
 
-      <div className="space-y-6">
-        {sortedResults.map((result) => (
-          <Card key={result.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="flex flex-col md:flex-row">
-              <div className="md:w-1/3 relative h-48 md:h-auto">
-                <Image
-                  src={result.image_url || "/placeholder.svg?height=300&width=400"}
-                  alt={result.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute top-2 right-2 bg-brand-teal text-white px-2 py-1 rounded text-xs font-medium">
-                  {result.tour_type}
+      {/* Results Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {results.map((result) => (
+          <Card key={result.id} className="overflow-hidden group">
+            <div className="relative h-48">
+              <Image
+                src={result.image}
+                alt={result.title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              {result.featured && (
+                <div className="absolute top-2 left-2">
+                  <span className="bg-brand-teal text-white px-2 py-1 rounded text-xs font-medium">
+                    Featured
+                  </span>
                 </div>
-              </div>
-
-              <div className="md:w-2/3 p-6">
-                <div className="flex flex-col md:flex-row justify-between">
-                  <div className="flex-1">
-                    <h3 className="font-bold text-xl mb-2 hover:text-brand-teal transition-colors">
-                      <Link href={`/tours/${result.slug}`}>{result.title}</Link>
-                    </h3>
-                    <div className="flex items-center text-muted-foreground text-sm mb-2">
-                      <MapPin size={14} className="mr-1" />
-                      {result.destination_name}, {result.country}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center mt-2 md:mt-0">
-                    <Star size={16} className="text-yellow-400 fill-current" />
-                    <span className="ml-1 font-medium">{result.rating}</span>
-                    <span className="text-muted-foreground text-sm ml-1">({result.review_count} reviews)</span>
-                  </div>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h3 className="font-bold text-lg mb-1 line-clamp-1">{result.title}</h3>
+                <div className="flex items-center gap-2 text-sm mb-2">
+                  <MapPin className="h-3 w-3" />
+                  <span>{result.location}</span>
                 </div>
-
-                <p className="text-muted-foreground my-4 line-clamp-2">{result.description}</p>
-
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4">
-                  <div className="flex gap-4 text-sm text-muted-foreground mb-4 md:mb-0">
-                    <div className="flex items-center">
-                      <Calendar size={14} className="mr-1" />
-                      {result.duration_days} days
-                    </div>
-                    <div className="flex items-center">
-                      <Users size={14} className="mr-1" />
-                      Max {result.max_participants} people
-                    </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center text-sm">
+                    <Calendar className="h-3 w-3 mr-1" />
+                    <span>{result.duration}</span>
                   </div>
-
-                  <div className="flex items-center gap-4">
-                    <div className="text-right">
-                      <div className="text-2xl font-bold text-brand-teal">${result.price}</div>
-                      <span className="text-xs text-muted-foreground">per person</span>
-                    </div>
-                    <Link href={`/tours/${result.slug}`}>
-                      <Button className="bg-brand-teal hover:bg-brand-navy">View Details</Button>
-                    </Link>
+                  <div className="flex items-center text-sm">
+                    <Star className="h-3 w-3 mr-1" />
+                    <span>{result.rating}</span>
                   </div>
                 </div>
               </div>
             </div>
+            <CardContent className="p-4">
+              <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{result.description}</p>
+              <div className="flex items-center text-sm text-muted-foreground mb-3">
+                <Users className="h-3 w-3 mr-1" />
+                <span>Max {result.max_participants} people</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <div className="font-bold text-brand-teal">
+                  ${result.price.toLocaleString()}
+                  <span className="text-sm text-muted-foreground font-normal">/person</span>
+                </div>
+                <Link href={`/tours/${result.slug}`}>
+                  <Button size="sm" variant="outline">View Details</Button>
+                </Link>
+              </div>
+            </CardContent>
           </Card>
         ))}
       </div>
 
-      {pagination && pagination.totalPages > 1 && (
-        <div className="flex justify-center mt-8">
-          <div className="flex space-x-2">
-            {Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map((page) => (
-              <Button
-                key={page}
-                variant={page === pagination.page ? "default" : "outline"}
-                size="sm"
-                className={page === pagination.page ? "bg-brand-teal" : ""}
-              >
-                {page}
-              </Button>
-            ))}
-          </div>
+      {/* No Results */}
+      {results.length === 0 && (
+        <div className="text-center py-12">
+          <h3 className="text-xl font-semibold mb-2">No tours found</h3>
+          <p className="text-muted-foreground mb-4">
+            Try adjusting your search criteria or browse all our available tours.
+          </p>
+          <Link href="/tours">
+            <Button>Browse All Tours</Button>
+          </Link>
         </div>
       )}
     </div>

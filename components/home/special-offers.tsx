@@ -17,43 +17,24 @@ export default function SpecialOffers() {
   const offers = [
     {
       id: 1,
-      title: "Summer Special: Maldives Getaway",
-      discount: "25% OFF",
-      validUntil: "June 30, 2025",
-      image: "/placeholder.svg?height=300&width=600",
-      description: "Enjoy crystal clear waters and white sandy beaches with our exclusive summer package.",
-      slug: "maldives-summer-special",
-      color: "from-blue-500/20 to-cyan-400/20",
+      title: "Early Bird Discount",
+      description: "Book 60 days in advance and save up to 25% on selected tours",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-brand-teal/20 to-brand-navy/20",
     },
     {
       id: 2,
-      title: "Early Bird: European Christmas Markets",
-      discount: "20% OFF",
-      validUntil: "August 31, 2025",
-      image: "/placeholder.svg?height=300&width=600",
-      description: "Book early and save on our magical Christmas markets tour across Europe's most charming cities.",
-      slug: "european-christmas-markets",
-      color: "from-red-500/20 to-amber-400/20",
+      title: "Group Travel Savings",
+      description: "Travel with 6+ people and enjoy exclusive group discounts",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-brand-navy/20 to-brand-teal/20",
     },
     {
       id: 3,
-      title: "Honeymoon Package: Santorini Bliss",
-      discount: "Complimentary Upgrades",
-      validUntil: "December 31, 2025",
-      image: "/placeholder.svg?height=300&width=600",
-      description: "Start your journey together with breathtaking views and romantic experiences in Santorini.",
-      slug: "santorini-honeymoon",
-      color: "from-purple-500/20 to-pink-400/20",
-    },
-    {
-      id: 4,
-      title: "Adventure Deal: Costa Rica Exploration",
-      discount: "15% OFF",
-      validUntil: "September 30, 2025",
-      image: "/placeholder.svg?height=300&width=600",
-      description: "Explore rainforests, volcanoes, and beaches in this thrilling Costa Rica adventure package.",
-      slug: "costa-rica-adventure",
-      color: "from-green-500/20 to-emerald-400/20",
+      title: "Last Minute Deals",
+      description: "Grab amazing deals on tours departing within 30 days",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-brand-teal/20 to-brand-navy/20",
     },
   ]
 
@@ -76,7 +57,7 @@ export default function SpecialOffers() {
           <div>
             <Badge
               variant="outline"
-              className="mb-3 px-3 py-1 border-amber-200 bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800"
+              className="mb-3 px-3 py-1 border-brand-teal/200 bg-brand-teal/50 text-brand-teal-700 dark:bg-brand-teal/20 dark:text-brand-teal-400 dark:border-brand-teal/800"
             >
               Limited Time
             </Badge>
@@ -120,9 +101,9 @@ export default function SpecialOffers() {
                 className="min-w-full lg:min-w-[calc(33.333%-1rem)] overflow-hidden border-none shadow-lg"
               >
                 <div className={cn("relative bg-gradient-to-r p-6 rounded-xl", offer.color)}>
-                  <div className="absolute top-4 left-4 bg-white dark:bg-gray-800 text-amber-600 px-3 py-1 rounded-full font-bold text-sm z-10 shadow-md">
-                    {offer.discount}
-                  </div>
+                                  <div className="absolute top-4 left-4 bg-white dark:bg-gray-800 text-brand-teal px-3 py-1 rounded-full font-bold text-sm z-10 shadow-md">
+                  {offer.discount}
+                </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div className="relative h-48 md:h-64 rounded-lg overflow-hidden">
                       <Image src={offer.image || "/placeholder.svg"} alt={offer.title} fill className="object-cover" />
@@ -135,7 +116,7 @@ export default function SpecialOffers() {
                         Valid until: {offer.validUntil}
                       </div>
                       <Link href={`/tours/${offer.slug}`}>
-                        <Button className="w-full bg-amber-600 hover:bg-amber-700 rounded-full">View Offer</Button>
+                        <Button className="w-full bg-brand-teal hover:bg-brand-navy rounded-full">View Offer</Button>
                       </Link>
                     </div>
                   </div>
@@ -152,7 +133,7 @@ export default function SpecialOffers() {
               onClick={() => setActiveIndex(index)}
               className={cn(
                 "w-2 h-2 rounded-full mx-1 transition-all",
-                index === activeIndex ? "bg-amber-600 w-6" : "bg-gray-300 dark:bg-gray-700",
+                index === activeIndex ? "bg-brand-teal w-6" : "bg-gray-300 dark:bg-gray-700",
               )}
               aria-label={`Go to slide ${index + 1}`}
             />

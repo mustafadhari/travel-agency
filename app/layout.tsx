@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "EasyOurTour - Make your Travel Easy & Affordable",
-  description: "Find and book the best travel experiences at affordable prices",
+  description: "Find and book the best travel services at affordable prices",
     generator: 'v0.dev'
 }
 

@@ -48,7 +48,7 @@ export default function TourFilters() {
               <SelectItem value="group">Group Tours</SelectItem>
               <SelectItem value="honeymoon">Honeymoon Packages</SelectItem>
               <SelectItem value="adventure">Adventure Tours</SelectItem>
-              <SelectItem value="cultural">Cultural Experiences</SelectItem>
+              <SelectItem value="cultural">Cultural Services</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -81,7 +81,7 @@ export default function TourFilters() {
         </div>
 
         <div className="space-y-2">
-          <Label>Experiences</Label>
+          <Label>Services</Label>
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
               <Checkbox id="beach" />
@@ -118,7 +118,7 @@ export default function TourFilters() {
       </div>
 
       <div className="pt-4 border-t flex flex-col gap-2">
-        <Button className="w-full bg-amber-600 hover:bg-amber-700">Apply Filters</Button>
+        <Button className="w-full bg-brand-teal hover:bg-brand-navy">Apply Filters</Button>
         <Button variant="outline" className="w-full">
           Reset
         </Button>

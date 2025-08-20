@@ -1,7 +1,8 @@
 import HeroSection from "@/components/home/hero-section"
 import DestinationExplorer from "@/components/home/destination-explorer"
 import ExperienceShowcase from "@/components/home/experience-showcase"
-import TravelStats from "@/components/home/travel-stats"
+import InstagramFeed from "@/components/home/instagram-feed"
+import PopularTours from "@/components/home/popular-tours"
 import TestimonialSlider from "@/components/home/testimonial-slider"
 import NewsletterSection from "@/components/home/newsletter-section"
 import FloatingCTA from "@/components/home/floating-cta"
@@ -12,10 +13,11 @@ export default function HomePage() {
       <HeroSection />
       <DestinationExplorer />
       <ExperienceShowcase />
-      <TravelStats />
+      <PopularTours />
       <TestimonialSlider />
       <NewsletterSection />
-      <FloatingCTA />
+      {/* <FloatingCTA /> */}
+      {/* <InstagramFeed /> */}
     </main>
   )
 }

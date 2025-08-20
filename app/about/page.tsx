@@ -5,14 +5,14 @@ import CompanyValues from "@/components/about/company-values"
 import OurStory from "@/components/about/our-story"
 
 export const metadata: Metadata = {
-  title: "About Us | Wanderlux",
-  description: "Learn about our company, mission, values, and the team behind Wanderlux Travel.",
+  title: "About Us | EasYourTour",
+  description: "Learn about our company, mission, values, and the team behind EasYourTour Travel.",
 }
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
-      <PageHeader title="About Wanderlux" description="Crafting unforgettable travel experiences since 2010" />
+    <div className="container mx-auto px-4 pt-28 pb-12">
+      <PageHeader title="About EasYourTour" description="Crafting unforgettable travel services since 2024" />
 
       <div className="mt-12">
         <OurStory />

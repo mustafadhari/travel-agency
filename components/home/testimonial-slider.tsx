@@ -25,23 +25,23 @@ export default function TestimonialSlider() {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      location: "New York, USA",
-      image: "/placeholder.svg?height=100&width=100",
+      name: "Vinod Pandey",
+      location: "Mumbai, India",
+      image: "/images/testimonial1.jpeg?height=100&width=100",
       text: "EasyOurTour made our family vacation to Greece absolutely seamless. From the personalized itinerary to the knowledgeable guides, every detail was perfect. We'll definitely be booking our next adventure with them!",
       rating: 5,
     },
     {
-      name: "David Chen",
-      location: "Toronto, Canada",
-      image: "/placeholder.svg?height=100&width=100",
+      name: "Pranay Patel",
+      location: "Surat, India",
+      image: "/images/testimonial2.jpeg?height=100&width=100",
       text: "I was hesitant about booking a solo trip to Japan, but the team at EasyOurTour made it so easy. They arranged everything perfectly and were always available when I needed assistance. Truly a 5-star experience!",
       rating: 5,
     },
     {
-      name: "Emma Rodriguez",
-      location: "Barcelona, Spain",
-      image: "/placeholder.svg?height=100&width=100",
+      name: "Pallavi Soni",
+      location: "Pune, India",
+      image: "/images/testimonial3.jpeg?height=100&width=100",
       text: "Our honeymoon in Bali was everything we dreamed of and more. EasyOurTour understood exactly what we wanted and delivered an unforgettable experience. The private villa they booked for us had the most stunning views!",
       rating: 5,
     },
@@ -65,7 +65,7 @@ export default function TestimonialSlider() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Travelers Say</h2>
-            <p className="text-muted-foreground">Real experiences from travelers who have explored the world with us</p>
+            <p className="text-muted-foreground">Real services from travelers who have explored the world with us</p>
           </motion.div>
         </div>
 
@@ -122,35 +122,37 @@ export default function TestimonialSlider() {
             )}
           </AnimatePresence>
 
-          <div className="flex justify-center mt-8 gap-4">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevSlide}
-              className="rounded-full border-brand-teal/20 hover:bg-brand-teal/10 hover:text-brand-teal"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </Button>
-            <div className="flex gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    currentSlide === index ? "bg-brand-teal w-8" : "bg-brand-teal/30 hover:bg-brand-teal/50"
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
+          <div className="mt-8">
+            <div className="mx-auto w-fit flex items-center gap-4 rounded-full border border-brand-teal/20 bg-white/80 backdrop-blur px-4 py-2 shadow-sm">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={prevSlide}
+                className="rounded-full border-brand-teal/20 hover:bg-brand-teal/10 hover:text-brand-teal"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+              <div className="flex gap-2 items-center">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentSlide === index ? "bg-brand-teal w-8" : "bg-brand-teal/30 hover:bg-brand-teal/50"
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={nextSlide}
+                className="rounded-full border-brand-teal/20 hover:bg-brand-teal/10 hover:text-brand-teal"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </Button>
             </div>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextSlide}
-              className="rounded-full border-brand-teal/20 hover:bg-brand-teal/10 hover:text-brand-teal"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </Button>
           </div>
         </div>
       </motion.div>

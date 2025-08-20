@@ -88,7 +88,7 @@ export default function HotelSearch() {
         </div>
 
         <div className="flex items-end">
-          <Button className="w-full bg-amber-600 hover:bg-amber-700">
+          <Button className="w-full bg-brand-teal hover:bg-brand-navy">
             <Search className="mr-2 h-4 w-4" /> Search Hotels
           </Button>
         </div>

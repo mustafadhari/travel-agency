@@ -5,13 +5,13 @@ import VisaServices from "@/components/visa/visa-services"
 import VisaInquiryForm from "@/components/visa/visa-inquiry-form"
 
 export const metadata: Metadata = {
-  title: "Visa Assistance | Wanderlux",
+  title: "Visa Assistance | EasYourTour",
   description: "Professional visa assistance services for hassle-free travel planning.",
 }
 
 export default function VisaPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 pt-28 pb-12">
       <PageHeader title="Visa Assistance Services" description="Expert guidance for all your visa requirements" />
 
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">

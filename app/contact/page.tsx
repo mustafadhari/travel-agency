@@ -5,13 +5,13 @@ import ContactInfo from "@/components/contact/contact-info"
 import ContactMap from "@/components/contact/contact-map"
 
 export const metadata: Metadata = {
-  title: "Contact Us | Wanderlux",
+  title: "Contact Us | EasYourTour",
   description: "Get in touch with our travel experts for inquiries, bookings, or assistance.",
 }
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 pt-28 pb-12">
       <PageHeader title="Contact Us" description="We'd love to hear from you" />
 
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12">

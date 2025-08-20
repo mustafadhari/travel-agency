@@ -70,7 +70,7 @@ export default function ContactForm() {
         <Textarea id="message" placeholder="Please provide details about your inquiry" rows={5} required />
       </div>
 
-      <Button type="submit" className="w-full bg-amber-600 hover:bg-amber-700" disabled={isSubmitting}>
+      <Button type="submit" className="w-full bg-brand-teal hover:bg-brand-navy" disabled={isSubmitting}>
         {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
     </form>

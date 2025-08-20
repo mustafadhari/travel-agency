@@ -51,12 +51,12 @@ export default function FlightDeals() {
               <h3 className="font-bold text-lg">
                 {deal.from} <ArrowRight className="inline h-4 w-4" /> {deal.to}
               </h3>
-              <div className="text-amber-600 font-bold">${deal.price}</div>
+              <div className="text-brand-teal font-bold">${deal.price}</div>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
               {deal.airline} • {deal.period}
             </p>
-            <Button className="w-full bg-amber-600 hover:bg-amber-700">View Deal</Button>
+            <Button className="w-full bg-brand-teal hover:bg-brand-navy">View Deal</Button>
           </CardContent>
         </Card>
       ))}

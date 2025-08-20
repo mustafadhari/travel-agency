@@ -5,13 +5,13 @@ import FeaturedFlights from "@/components/flights/featured-flights"
 import FlightDeals from "@/components/flights/flight-deals"
 
 export const metadata: Metadata = {
-  title: "Flight Bookings | Wanderlux",
+  title: "Flight Bookings | EasYourTour",
   description: "Book premium flights to destinations worldwide with exclusive deals and offers.",
 }
 
 export default function FlightsPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 pt-28 pb-12">
       <PageHeader title="Flight Bookings" description="Find and book the best flights to your dream destinations" />
 
       <div className="mt-8">

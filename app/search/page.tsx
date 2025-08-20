@@ -5,23 +5,25 @@ import PageHeader from "@/components/page-header"
 import { Loader2 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Search Results | Wanderlux",
+  title: "Search Results | EasYourTour",
   description: "Find your perfect travel experience with our search results.",
 }
 
-export default function SearchPage({
+export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const destination = typeof searchParams.destination === "string" ? searchParams.destination : ""
-  const date = typeof searchParams.date === "string" ? searchParams.date : ""
-  const travelers = typeof searchParams.travelers === "string" ? searchParams.travelers : ""
-  const adults = typeof searchParams.adults === "string" ? searchParams.adults : "1"
-  const children = typeof searchParams.children === "string" ? searchParams.children : "0"
+  const params = await searchParams
+  const destination = typeof params.destination === "string" ? params.destination : ""
+  const date = typeof params.date === "string" ? params.date : ""
+  const duration = typeof params.duration === "string" ? params.duration : ""
+  const travelers = typeof params.travelers === "string" ? params.travelers : ""
+  const adults = typeof params.adults === "string" ? params.adults : "1"
+  const children = typeof params.children === "string" ? params.children : "0"
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 pt-28 pb-12">
       <PageHeader
         title="Search Results"
         description={`Showing travel options ${destination ? `for ${destination}` : ""}`}
@@ -40,6 +42,12 @@ export default function SearchPage({
             <div>
               <span className="text-sm text-muted-foreground">Date:</span>
               <p className="font-medium">{date}</p>
+            </div>
+          )}
+          {duration && (
+            <div>
+              <span className="text-sm text-muted-foreground">Duration:</span>
+              <p className="font-medium">{duration}</p>
             </div>
           )}
           {travelers && (
@@ -66,6 +74,7 @@ export default function SearchPage({
           <SearchResults
             destination={destination}
             date={date}
+            duration={duration}
             travelers={travelers}
             adults={adults}
             children={children}

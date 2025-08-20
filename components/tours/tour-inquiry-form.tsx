@@ -41,7 +41,7 @@ export default function TourInquiryForm() {
         </div>
       </div>
 
-      <Button type="submit" className="w-full bg-amber-600 hover:bg-amber-700" disabled={isSubmitting}>
+      <Button type="submit" className="w-full bg-brand-teal hover:bg-brand-navy" disabled={isSubmitting}>
         {isSubmitting ? "Sending..." : "Send Inquiry"}
       </Button>
     </form>

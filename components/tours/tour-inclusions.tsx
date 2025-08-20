@@ -43,7 +43,7 @@ export default function TourInclusions() {
         <ul className="space-y-2">
           {exclusions.map((item, index) => (
             <li key={index} className="flex items-start">
-              <X className="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" />
+              <X className="h-5 w-5 text-brand-teal mr-2 mt-0.5 flex-shrink-0" />
               <span>{item}</span>
             </li>
           ))}

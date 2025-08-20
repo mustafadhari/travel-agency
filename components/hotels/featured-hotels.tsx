@@ -52,17 +52,17 @@ export default function FeaturedHotels() {
               </div>
               <div className="flex">
                 {Array.from({ length: hotel.rating }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  <Star key={i} className="h-4 w-4 fill-brand-teal text-brand-teal" />
                 ))}
               </div>
             </div>
             <p className="text-sm text-muted-foreground mb-4">{hotel.description}</p>
             <div className="flex justify-between items-center">
-              <div className="font-bold text-amber-600">
+              <div className="font-bold text-brand-teal">
                 ${hotel.price}
-                <span className="text-xs font-normal text-muted-foreground">/night</span>
+                <span className="text-sm text-muted-foreground font-normal">/night</span>
               </div>
-              <Button className="bg-amber-600 hover:bg-amber-700">View Details</Button>
+              <Button className="bg-brand-teal hover:bg-brand-navy">View Details</Button>
             </div>
           </CardContent>
         </Card>

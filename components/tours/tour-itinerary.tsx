@@ -54,12 +54,12 @@ export default function TourItinerary() {
 
   return (
     <Accordion type="single" collapsible className="w-full">
-      {itinerary.map((day) => (
+      {itinerary.map((day, index) => (
         <AccordionItem key={day.day} value={`day-${day.day}`}>
-          <AccordionTrigger className="hover:text-amber-600">
+          <AccordionTrigger className="hover:text-brand-teal">
             <div className="flex items-center">
-              <span className="bg-amber-100 text-amber-800 w-8 h-8 rounded-full flex items-center justify-center mr-3">
-                {day.day}
+              <span className="bg-brand-teal/20 text-brand-teal w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                {index + 1}
               </span>
               <span>{day.title}</span>
             </div>

@@ -29,9 +29,9 @@ export default function TourPricing({ price }: TourPricingProps) {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <div className="text-2xl font-bold text-amber-600">
+        <div className="text-2xl font-bold text-brand-teal">
           ${price}
-          <span className="text-sm font-normal text-muted-foreground">/person</span>
+          <span className="text-sm text-muted-foreground font-normal">/person</span>
         </div>
       </div>
 

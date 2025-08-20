@@ -1,83 +1,79 @@
-import { type NextRequest, NextResponse } from "next/server"
-import { executeQuery } from "@/lib/database"
-
-export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url)
-    const status = searchParams.get("status")
-    const page = Number.parseInt(searchParams.get("page") || "1")
-    const limit = Number.parseInt(searchParams.get("limit") || "10")
-    const offset = (page - 1) * limit
-
-    let query = `
-      SELECT 
-        i.*,
-        t.title as tour_title,
-        d.name as destination_name
-      FROM inquiries i
-      LEFT JOIN tours t ON i.tour_id = t.id
-      LEFT JOIN destinations d ON t.destination_id = d.id
-      WHERE 1=1
-    `
-    const params: any[] = []
-
-    if (status) {
-      query += " AND i.status = ?"
-      params.push(status)
-    }
-
-    query += " ORDER BY i.created_at DESC LIMIT ? OFFSET ?"
-    params.push(limit, offset)
-
-    const inquiries = await executeQuery(query, params)
-
-    // Get total count
-    let countQuery = "SELECT COUNT(*) as total FROM inquiries WHERE 1=1"
-    const countParams: any[] = []
-
-    if (status) {
-      countQuery += " AND status = ?"
-      countParams.push(status)
-    }
-
-    const countResult = (await executeQuery(countQuery, countParams)) as any[]
-    const total = countResult[0].total
-    const totalPages = Math.ceil(total / limit)
-
-    return NextResponse.json({
-      inquiries,
-      pagination: {
-        page,
-        limit,
-        total,
-        totalPages,
-      },
-    })
-  } catch (error) {
-    console.error("Inquiries API error:", error)
-    return NextResponse.json({ error: "Failed to fetch inquiries" }, { status: 500 })
-  }
-}
+import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('Inquiry API called')
     const body = await request.json()
-    const { tour_id, name, email, phone, message, adults, children, preferred_date } = body
+    console.log('Request body:', body)
+    
+    // Validate required fields
+    const { name, phone } = body
+    
+    if (!name || !phone) {
+      console.log('Validation failed: missing name or phone')
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      )
+    }
 
-    const query = `
-      INSERT INTO inquiries (
-        tour_id, name, email, phone, message, 
-        adults, children, preferred_date
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `
+    // Prepare the data for n8n webhook
+    const n8nPayload = {
+      name,
+      phone,
+      destination: body.destination || '',
+      travelDate: body.travelDate || '',
+      duration: body.duration || '',
+      travelers: body.travelers || {},
+      submittedAt: body.submittedAt || new Date().toISOString(),
+      source: body.source || 'Website Inquiry'
+    }
 
-    const params = [tour_id || null, name, email, phone, message, adults || 1, children || 0, preferred_date || null]
+    // Check if n8n webhook URL is configured
+    const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL
+    
+    if (n8nWebhookUrl) {
+      // Send to n8n webhook if URL is configured
+      try {
+        const n8nResponse = await fetch(n8nWebhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(n8nPayload),
+        })
 
-    const result = await executeQuery(query, params)
+        if (!n8nResponse.ok) {
+          console.error('N8N webhook failed:', await n8nResponse.text())
+          return NextResponse.json(
+            { error: 'Failed to process inquiry' },
+            { status: 500 }
+          )
+        }
+      } catch (webhookError) {
+        console.error('Error calling n8n webhook:', webhookError)
+        // Continue with success response even if webhook fails
+      }
+    } else {
+      // Log the inquiry data for development/testing
+      console.log('Inquiry received (n8n webhook not configured):', n8nPayload)
+    }
 
-    return NextResponse.json({ success: true, id: (result as any).insertId })
+    console.log('Inquiry processed successfully')
+    return NextResponse.json(
+      { 
+        success: true, 
+        message: 'Inquiry submitted successfully',
+        data: n8nPayload
+      },
+      { status: 200 }
+    )
+
   } catch (error) {
-    console.error("Create inquiry error:", error)
-    return NextResponse.json({ error: "Failed to create inquiry" }, { status: 500 })
+    console.error('Error processing inquiry:', error)
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }

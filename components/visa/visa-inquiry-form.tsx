@@ -96,7 +96,7 @@ export default function VisaInquiryForm() {
         />
       </div>
 
-      <Button type="submit" className="w-full bg-amber-600 hover:bg-amber-700" disabled={isSubmitting}>
+      <Button type="submit" className="w-full bg-brand-teal hover:bg-brand-navy" disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit Inquiry"}
       </Button>
     </form>

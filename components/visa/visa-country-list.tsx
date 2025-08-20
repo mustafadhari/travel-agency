@@ -36,8 +36,14 @@ export default function VisaCountryList() {
         return "bg-green-100 text-green-800"
       case "Moderate":
         return "bg-amber-100 text-amber-800"
-      case "Complex":
-        return "bg-red-100 text-red-800"
+              case "Complex":
+          return "bg-brand-teal/20 text-brand-teal"
+      case "high":
+        return "bg-brand-teal/20 text-brand-teal"
+      case "medium":
+        return "bg-brand-navy/20 text-brand-navy"
+      case "low":
+        return "bg-gray-100 text-gray-800"
       default:
         return "bg-gray-100 text-gray-800"
     }

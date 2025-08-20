@@ -79,16 +79,16 @@ export default function HotelsList() {
                     <MapPin size={14} className="mr-1" />
                     {hotel.location}
                   </div>
-                  <div className="flex mb-4">
-                    {Array.from({ length: hotel.rating }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  <div className="flex items-center mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-brand-teal text-brand-teal" />
                     ))}
+                    <span className="ml-2 text-sm text-muted-foreground">(4.8/5)</span>
                   </div>
-                </div>
-
-                <div className="text-2xl font-bold text-amber-600 mt-2 md:mt-0">
-                  ${hotel.price}
-                  <span className="text-xs font-normal text-muted-foreground">/night</span>
+                  <div className="text-2xl font-bold text-brand-teal mt-2 md:mt-0">
+                    ${hotel.price}
+                    <span className="text-sm text-muted-foreground font-normal">/night</span>
+                  </div>
                 </div>
               </div>
 
@@ -104,7 +104,7 @@ export default function HotelsList() {
               </div>
 
               <div className="flex justify-end">
-                <Button className="bg-amber-600 hover:bg-amber-700">View Details</Button>
+                <Button className="bg-brand-teal hover:bg-brand-navy">View Details</Button>
               </div>
             </div>
           </div>

@@ -25,19 +25,19 @@ export default function TeamMembers() {
     {
       name: "James Wilson",
       role: "Adventure Travel Director",
-      bio: "An avid mountaineer and scuba diver, James curates our most exciting adventure experiences.",
+      bio: "An avid mountaineer and scuba diver, James curates our most exciting adventure services.",
       image: "/placeholder.svg?height=300&width=300",
     },
     {
       name: "Priya Patel",
-      role: "Luxury Experiences Manager",
+      role: "Luxury Services Manager",
       bio: "Previously with a five-star hotel chain, Priya specializes in creating unforgettable luxury moments for our clients.",
       image: "/placeholder.svg?height=300&width=300",
     },
     {
       name: "David Okafor",
       role: "Africa Specialist",
-      bio: "Born and raised in Kenya, David's passion for wildlife conservation informs our sustainable safari experiences.",
+      bio: "Born and raised in Kenya, David's passion for wildlife conservation informs our sustainable safari services.",
       image: "/placeholder.svg?height=300&width=300",
     },
   ]
@@ -51,7 +51,7 @@ export default function TeamMembers() {
           </div>
           <CardContent className="p-6">
             <h3 className="font-bold text-lg">{member.name}</h3>
-            <p className="text-amber-600 mb-2">{member.role}</p>
+            <p className="text-brand-teal mb-2">{member.role}</p>
             <p className="text-muted-foreground mb-4">{member.bio}</p>
             <div className="flex space-x-2">
               <a href="#" className="text-muted-foreground hover:text-foreground">

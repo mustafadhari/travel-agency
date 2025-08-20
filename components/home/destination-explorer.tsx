@@ -7,78 +7,22 @@ import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useInView } from "react-intersection-observer"
+import { DESTINATIONS } from "@/lib/destinations"
 
-interface Destination {
-  id: number
-  name: string
-  image: string
-  location: string
-  rating: number
-  featured?: boolean
-}
-
-const destinations: Destination[] = [
-  {
-    id: 1,
-    name: "Bali",
-    image: "/placeholder.svg?height=600&width=800",
-    location: "Indonesia",
-    rating: 4.8,
-    featured: true,
-  },
-  {
-    id: 2,
-    name: "Santorini",
-    image: "/placeholder.svg?height=600&width=800",
-    location: "Greece",
-    rating: 4.7,
-  },
-  {
-    id: 3,
-    name: "Kyoto",
-    image: "/placeholder.svg?height=600&width=800",
-    location: "Japan",
-    rating: 4.9,
-    featured: true,
-  },
-  {
-    id: 4,
-    name: "Maldives",
-    image: "/placeholder.svg?height=600&width=800",
-    location: "South Asia",
-    rating: 4.8,
-  },
-  {
-    id: 5,
-    name: "Paris",
-    image: "/placeholder.svg?height=600&width=800",
-    location: "France",
-    rating: 4.6,
-  },
-  {
-    id: 6,
-    name: "Machu Picchu",
-    image: "/placeholder.svg?height=600&width=800",
-    location: "Peru",
-    rating: 4.9,
-    featured: true,
-  },
-]
+const destinations = DESTINATIONS
+const HOME_LIMIT = 6
 
 export default function DestinationExplorer() {
-  const [activeTab, setActiveTab] = useState<"all" | "featured">("all")
-  const [filteredDestinations, setFilteredDestinations] = useState<Destination[]>(destinations)
+  const [activeTab, setActiveTab] = useState<"international" | "domestic">("international")
+  const [filteredDestinations, setFilteredDestinations] = useState<typeof destinations>(destinations.slice(0, HOME_LIMIT))
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
 
   useEffect(() => {
-    if (activeTab === "all") {
-      setFilteredDestinations(destinations)
-    } else {
-      setFilteredDestinations(destinations.filter((d) => d.featured))
-    }
+    const pool = destinations.filter((d) => d.category === activeTab)
+    setFilteredDestinations(pool.slice(0, HOME_LIMIT))
   }, [activeTab])
 
   return (
@@ -106,26 +50,26 @@ export default function DestinationExplorer() {
         <div className="flex justify-center mb-8">
           <div className="inline-flex items-center rounded-full border border-gray-200 p-1 dark:border-gray-800">
             <button
-              onClick={() => setActiveTab("all")}
+              onClick={() => setActiveTab("international")}
               className={cn(
                 "inline-flex items-center justify-center whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                activeTab === "all"
+                activeTab === "international"
                   ? "bg-brand-teal text-white shadow-sm"
                   : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800",
               )}
             >
-              All Destinations
+              International
             </button>
             <button
-              onClick={() => setActiveTab("featured")}
+              onClick={() => setActiveTab("domestic")}
               className={cn(
                 "inline-flex items-center justify-center whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                activeTab === "featured"
+                activeTab === "domestic"
                   ? "bg-brand-teal text-white shadow-sm"
                   : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800",
               )}
             >
-              Featured
+              Domestic
             </button>
           </div>
         </div>
@@ -160,7 +104,7 @@ export default function DestinationExplorer() {
                       {[...Array(5)].map((_, i) => (
                         <svg
                           key={i}
-                          className={`w-4 h-4 ${i < Math.floor(destination.rating) ? "text-yellow-400" : "text-gray-300"}`}
+                          className={`w-4 h-4 ${i < Math.floor(destination.rating) ? "text-brand-teal" : "text-gray-300"}`}
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -170,7 +114,7 @@ export default function DestinationExplorer() {
                       <span className="text-white text-xs ml-1">{destination.rating}</span>
                     </div>
                   </div>
-                  <Link href={`/destinations/${destination.name.toLowerCase()}`} className="mt-3 block">
+                  <Link href={`/destinations/${destination.slug}`} className="mt-3 block">
                     <Button className="w-full bg-white text-brand-navy hover:bg-white/90 border-none">
                       Explore <ChevronRight className="ml-1 h-4 w-4" />
                     </Button>

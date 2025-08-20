@@ -4,38 +4,34 @@ import { FileText, Clock, CheckCircle, Users, Globe, ShieldCheck } from "lucide-
 export default function VisaServices() {
   const services = [
     {
-      icon: <FileText className="h-8 w-8 text-amber-600" />,
       title: "Document Preparation",
-      description:
-        "We help you prepare all necessary documents according to the specific requirements of each country.",
+      description: "We help you gather and prepare all required documents for your visa application.",
+      icon: <FileText className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <Clock className="h-8 w-8 text-amber-600" />,
-      title: "Expedited Processing",
-      description:
-        "Need your visa quickly? Our expedited service ensures you get your visa in the shortest possible time.",
+      title: "Application Processing",
+      description: "Our experts handle the entire application process from start to finish.",
+      icon: <Clock className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <CheckCircle className="h-8 w-8 text-amber-600" />,
-      title: "Application Review",
-      description: "Our experts thoroughly review your application to minimize the risk of rejection.",
+      title: "Interview Preparation",
+      description: "Get ready for your visa interview with our comprehensive preparation guidance.",
+      icon: <CheckCircle className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <Users className="h-8 w-8 text-amber-600" />,
-      title: "Group Visa Processing",
-      description: "Special handling for family or group applications to ensure everyone travels together.",
+      title: "24/7 Support",
+      description: "Round-the-clock assistance for all your visa-related questions and concerns.",
+      icon: <Users className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <Globe className="h-8 w-8 text-amber-600" />,
-      title: "Multiple Country Visas",
-      description:
-        "Planning to visit multiple countries? We can help coordinate visa applications for your entire itinerary.",
+      title: "Global Coverage",
+      description: "Visa services for destinations worldwide with local expertise.",
+      icon: <Globe className="h-8 w-8 text-brand-teal" />,
     },
     {
-      icon: <ShieldCheck className="h-8 w-8 text-amber-600" />,
-      title: "Visa Consultation",
-      description:
-        "Not sure which visa you need? Our consultants provide personalized advice based on your travel plans.",
+      title: "Guaranteed Service",
+      description: "Our commitment to ensuring your visa application is processed efficiently.",
+      icon: <ShieldCheck className="h-8 w-8 text-brand-teal" />,
     },
   ]
 
