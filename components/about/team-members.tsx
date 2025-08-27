@@ -5,20 +5,20 @@ import { Facebook, Twitter, Linkedin } from "lucide-react"
 export default function TeamMembers() {
   const team = [
     {
-      name: "Sarah Johnson",
-      role: "Founder & CEO",
+      name: "Ali Asgar",
+      role: "Co-Founder",
       bio: "With over 20 years in luxury travel, Sarah has visited 75 countries across all seven continents.",
       image: "/placeholder.svg?height=300&width=300",
     },
     {
-      name: "Michael Chen",
-      role: "Head of Asia Pacific",
+      name: "Mustafa",
+      role: "Co-Founder",
       bio: "Born in Singapore and educated in Australia, Michael brings unique insights to our Asian destinations.",
       image: "/placeholder.svg?height=300&width=300",
     },
     {
-      name: "Elena Rodriguez",
-      role: "Europe Specialist",
+      name: "Zahra",
+      role: "Luxury Services Manager",
       bio: "A former tour guide in Spain, Elena has intimate knowledge of Europe's hidden gems and cultural treasures.",
       image: "/placeholder.svg?height=300&width=300",
     },

@@ -119,7 +119,7 @@ export default function TourInquiryForm({ tourTitle, tourLocation }: TourInquiry
             type="tel" 
             value={formData.phone}
             onChange={handleInputChange}
-            placeholder="Enter your phone number" 
+            placeholder="Enter your 10 digit phone number" 
             required 
           />
         </div>

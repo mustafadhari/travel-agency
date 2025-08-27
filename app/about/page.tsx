@@ -23,10 +23,10 @@ export default function AboutPage() {
         <CompanyValues />
       </div>
 
-      <div className="mt-16">
+      {/* <div className="mt-16">
         <h2 className="text-2xl font-bold mb-6">Meet Our Team</h2>
         <TeamMembers />
-      </div>
+      </div> */}
     </div>
   )
 }

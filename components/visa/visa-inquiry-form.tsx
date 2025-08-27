@@ -37,7 +37,7 @@ export default function VisaInquiryForm() {
 
       <div className="space-y-2">
         <Label htmlFor="phone">Phone Number</Label>
-        <Input id="phone" placeholder="Enter your phone number" required />
+        <Input id="phone" placeholder="Enter your 10 digit phone number" required />
       </div>
 
       <div className="space-y-2">

@@ -5,28 +5,20 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { MapPin, ArrowRight, Globe, Compass, Calendar, Users, Phone, Mail } from "lucide-react"
-import { DatePicker } from "@/components/ui/date-picker"
-import { TravelersSelector } from "@/components/ui/travelers-selector"
-import { DestinationSuggestions } from "@/components/ui/destination-suggestions"
-import { format } from "date-fns"
+import { ArrowRight, Globe, Compass, Users, Phone, Mail } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
 
 export default function HeroSection() {
   const { toast } = useToast()
-  const [destination, setDestination] = useState("")
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
-  const [duration, setDuration] = useState("")
-  const [travelers, setTravelers] = useState({ adults: 1, children: 0 })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [showDestinationSuggestions, setShowDestinationSuggestions] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   
-  // New inquiry form fields
+  // Inquiry form fields
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
+  const [email, setEmail] = useState("")
 
   useEffect(() => {
     setIsMounted(true)
@@ -54,21 +46,10 @@ export default function HeroSection() {
       return
     }
     
-    if (!name.trim()) {
+    if (!email.trim()) {
       toast({
-        title: "Name Required",
-        description: "Please enter your name.",
-        variant: "destructive",
-      })
-      return
-    }
-    
-
-    
-    if (!phone.trim()) {
-      toast({
-        title: "Phone Required",
-        description: "Please enter your phone number.",
+        title: "Email Required",
+        description: "Please enter your email address.",
         variant: "destructive",
       })
       return
@@ -81,14 +62,7 @@ export default function HeroSection() {
       const inquiryData = {
         name: name.trim(),
         phone: phone.trim(),
-        destination: destination.trim(),
-        travelDate: selectedDate ? format(selectedDate, "yyyy-MM-dd") : "",
-        duration: duration,
-        travelers: {
-          adults: travelers.adults,
-          children: travelers.children,
-          total: travelers.adults + travelers.children
-        },
+        email: email.trim(),
         submittedAt: new Date().toISOString(),
         source: "Hero Section Inquiry Form"
       }
@@ -126,10 +100,7 @@ export default function HeroSection() {
         // Reset form
         setName("")
         setPhone("")
-        setDestination("")
-        setSelectedDate(undefined)
-        setDuration("")
-        setTravelers({ adults: 1, children: 0 })
+        setEmail("")
       } else {
         console.error('API Error:', responseData)
         const errorMessage = responseData?.error || `HTTP ${response.status}: ${response.statusText}`
@@ -147,21 +118,7 @@ export default function HeroSection() {
     }
   }
 
-  const handleDestinationSelect = (selected: string) => {
-    setDestination(selected)
-    setShowDestinationSuggestions(false)
-  }
 
-  const handleDestinationInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    setDestination(value)
-    setShowDestinationSuggestions(value.length > 0)
-  }
-
-  const handleDestinationInputBlur = () => {
-    // Delay hiding suggestions to allow for clicks
-    setTimeout(() => setShowDestinationSuggestions(false), 200)
-  }
 
   return (
     <div className="relative min-h-[90vh] bg-gradient-to-br from-brand-navy to-brand-teal overflow-hidden">
@@ -232,30 +189,30 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Right Column - Search Form */}
+        {/* Right Column - Inquiry Form */}
         <motion.div
           key={isMounted ? "hero-right-mounted" : "hero-right-ssr"}
           initial={isMounted ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:w-6/12"
+          className="lg:w-5/12"
         >
-          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20">
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
-              <Mail className="mr-3 h-6 w-6 text-brand-light" />
-              Get Your Custom Quote
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20">
+            <h2 className="text-lg font-bold text-white mb-4 flex items-center">
+              <Mail className="mr-2 h-4 w-4 text-brand-light" />
+              Get Free Quote
             </h2>
 
-            {/* Search Form */}
+            {/* Inquiry Form */}
             <form onSubmit={handleInquirySubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
                 <div className="relative">
                   <Label htmlFor="name" className="block text-white text-sm mb-1">Name</Label>
                   <Input
                     id="name"
                     type="text"
                     placeholder="Your name"
-                    className="w-full pl-10 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/50 h-12 focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent"
+                    className="w-full bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white/50 h-11 focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
@@ -267,123 +224,65 @@ export default function HeroSection() {
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="Your phone number"
-                    className="w-full pl-10 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/50 h-12 focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent"
+                    placeholder="Enter your 10 digit phone number"
+                    className="w-full bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white/50 h-11 focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     required
                   />
                 </div>
 
-                <div className="relative md:col-span-2">
-                  <Label htmlFor="destination" className="block text-white text-sm mb-1">Destination</Label>
-                  <div className="relative">
-                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/70" />
-                    <Input
-                      id="destination"
-                      type="text"
-                      placeholder="Where do you want to go?"
-                      className="w-full pl-10 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/50 h-12 focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent"
-                      value={destination}
-                      onChange={handleDestinationInputChange}
-                      onBlur={handleDestinationInputBlur}
-                    />
-                  </div>
-                  <DestinationSuggestions
-                    query={destination}
-                    onSelect={handleDestinationSelect}
-                    isVisible={showDestinationSuggestions}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="travelDate" className="block text-white text-sm mb-1">
-                    <span className="flex items-center">
-                      <Calendar className="mr-1 h-4 w-4" /> When
-                    </span>
-                  </Label>
-                  <DatePicker
-                    date={selectedDate}
-                    setDate={setSelectedDate}
-                    className="h-12 border border-white/20 bg-white/10 text-white rounded-xl hover:bg-white/20"
-                    placeholder="Select date"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="duration" className="block text-white text-sm mb-1">Duration</Label>
-                  <select
-                    id="duration"
-                    className="w-full h-12 pl-4 bg-white/10 border border-white/20 rounded-xl text-white appearance-none focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
+                <div className="relative">
+                  <Label htmlFor="email" className="block text-white text-sm mb-1">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Your email address"
+                    className="w-full bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white/50 h-11 focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
-                  >
-                    <option value="">Any duration</option>
-                    <option value="1-3">1-3 days</option>
-                    <option value="4-7">4-7 days</option>
-                    <option value="8-14">8-14 days</option>
-                    <option value="15+">15+ days</option>
-                  </select>
-                </div>
-
-
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-                <div className="md:col-span-1">
-                  <Label htmlFor="travelers" className="block text-white text-sm mb-1">
-                    <span className="flex items-center">
-                      <Users className="mr-1 h-4 w-4" /> Travelers
-                    </span>
-                  </Label>
-                                      <TravelersSelector
-                      travelers={travelers}
-                      onTravelersChange={setTravelers}
-                      className="h-12 bg-white/10 border-white/20 text-white rounded-xl"
-                    />
-                </div>
-
-                <div className="md:col-span-2">
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full h-12 bg-brand-light hover:bg-brand-light/90 text-brand-navy font-medium rounded-xl transition-all duration-300 transform hover:scale-[1.02]"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <span className="flex items-center justify-center">
-                        <svg
-                          className="animate-spin mr-2 h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Submitting...
-                      </span>
-                    ) : (
-                      <span className="flex items-center justify-center">
-                        Submit Inquiry
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </span>
-                    )}
-                  </Button>
+                  />
                 </div>
               </div>
+
+              <Button
+                type="submit"
+                size="default"
+                className="w-full h-11 bg-brand-light hover:bg-brand-light/90 text-brand-navy font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02]"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center">
+                    <svg
+                      className="animate-spin mr-2 h-5 w-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Submitting...
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center">
+                    Submit
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </span>
+                )}
+              </Button>
             </form>
 
 

@@ -109,11 +109,11 @@ export default function EnquiryPopup() {
           )}
           <div>
             <Label htmlFor="eq-name">Name</Label>
-            <Input id="eq-name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" required />
+            <Input id="eq-name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your full name" required />
           </div>
           <div>
             <Label htmlFor="eq-phone">Phone</Label>
-            <Input id="eq-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Your phone" required />
+            <Input id="eq-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Enter your 10 digit phone number" required />
           </div>
           <div>
             <Label htmlFor="eq-email">Email</Label>

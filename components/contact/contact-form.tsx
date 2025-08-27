@@ -136,7 +136,7 @@ export default function ContactForm() {
           name="phone"
           value={formData.phone}
           onChange={handleInputChange}
-          placeholder="Enter your phone number" 
+          placeholder="Enter your 10 digit phone number" 
         />
       </div>
 

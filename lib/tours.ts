@@ -243,7 +243,7 @@ export const TOURS: Tour[] = [
     reviews: 112,
     image: "/images/kovalam-kerala.jpg",
     description: "Experience the best of South India with this enchanting 6-day tour. Visit the cool hill station of Munnar, the serene backwaters of Alleppey, and vibrant Kovalam Beach before exploring the southernmost point of India, Kanyakumari. A perfect blend of nature, culture, and coastal charm.",
-    featured: true,
+    featured: false,
     difficulty_level: "Easy",
     max_participants: 2,
     highlights: [
