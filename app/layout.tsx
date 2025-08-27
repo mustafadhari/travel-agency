@@ -6,13 +6,18 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
+import EnquiryPopup from "@/components/enquiry-popup"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "EasyOurTour - Make your Travel Easy & Affordable",
+  title: "EasYourTour - Make your Travel Easy & Affordable",
   description: "Find and book the best travel services at affordable prices",
-    generator: 'v0.dev'
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png"
+  }
 }
 
 export default function RootLayout({
@@ -28,6 +33,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <Toaster />
+          <EnquiryPopup />
         </ThemeProvider>
       </body>
     </html>

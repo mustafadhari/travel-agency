@@ -104,7 +104,7 @@ export default function PopularTours() {
                     <span>{tour.duration}</span>
                   </div>
                   <div className="font-bold text-lg text-brand-teal">
-                    ${tour.price.toLocaleString()}
+                    ₹{tour.price.toLocaleString()}
                     <span className="text-xs text-muted-foreground font-normal">/person</span>
                   </div>
                 </CardContent>

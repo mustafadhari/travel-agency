@@ -5,8 +5,8 @@ import { MapPin } from "lucide-react"
 import { DESTINATIONS } from "@/lib/destinations"
 
 export const metadata = {
-  title: "Destinations | EasyOurTour",
-  description: "Explore all destinations available at EasyOurTour",
+  title: "Destinations | EasYourTour",
+  description: "Explore all destinations available at EasYourTour",
 }
 
 export default function DestinationsIndexPage() {
@@ -55,7 +55,7 @@ export default function DestinationsIndexPage() {
         </div>
 
         <Section title="International" list={international} />
-        <Section title="Domestic" list={domestic} />
+        <Section title="India" list={domestic} />
 
         <div className="mt-12 text-center">
           <Link href="/">

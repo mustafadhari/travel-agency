@@ -4,6 +4,7 @@ export interface DestinationItem {
   name: string
   location: string
   image: string
+  video?: string
   rating: number
   featured?: boolean
   images?: string[]
@@ -20,17 +21,13 @@ export const DESTINATIONS: DestinationItem[] = [
     id: 1,
     slug: "kerala",
     name: "Kerala",
-    image: "/images/kerala1.jpg",
+    image: "/images/kerala6.jpg",
+    video: "/images/kerala.mp4",
     location: "Kerala",
     rating: 4.8,
-    images: [
-      "/images/kerala3.jpg",
-      "/images/kerala2.jpg",
-      "/images/kerala1.jpg",
-    ],
     description: "Experience the serene beauty of Munnar, a hill station nestled in the Western Ghats. Known for its sprawling tea plantations, misty mountains, and diverse wildlife, Munnar offers a perfect escape into nature's tranquility.",
     duration: "4-6 days",
-    price: "From ₹12,999 per person",
+    price: "From ₹9,999 per person",
     bestTime: "September to May",
     highlights: [
       "Visit the famous tea plantations and tea museum",
@@ -43,8 +40,8 @@ export const DESTINATIONS: DestinationItem[] = [
   },
   {
     id: 2,
-    slug: "spiti",
-    name: "Spiti Valley",
+    slug: "himachal-pradesh",
+    name: "Himachal Pradesh",
     image: "/images/manali.jpeg",
     location: "Himachal Pradesh",
     rating: 4.7,
@@ -68,16 +65,14 @@ export const DESTINATIONS: DestinationItem[] = [
   },
   {
     id: 3,
-    slug: "jawai",
-    name: "Jawai",
+    slug: "rajasthan",
+    name: "Rajasthan",
     image: "/images/jawai.jpeg",
     location: "Rajasthan",
     rating: 4.9,
     images: [
-      "/images/jawai1.jpeg",
-      "/images/jawai2.jpeg",
-      "/images/jawai3.jpeg",
     ],
+    video: "/images/rajasthan.mp4",
     description: "Experience the wild side of Rajasthan in Jawai, where leopards roam freely in the granite hills. This unique destination combines luxury with wildlife, offering intimate encounters with nature in a stunning landscape.",
     duration: "3-5 days",
     price: "From ₹25,999 per person",

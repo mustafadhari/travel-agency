@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { MapPin, Calendar, Users, Star } from "lucide-react"
 import { getTours } from "@/lib/tours"
+import { formatINR } from "@/lib/utils"
 
 export default function ToursList() {
   const tours = getTours()
@@ -70,7 +71,7 @@ export default function ToursList() {
                   </div>
 
                   <div className="flex items-center">
-                    <div className="text-2xl font-bold text-brand-teal mr-2">${tour.price}</div>
+                    <div className="text-2xl font-bold text-brand-teal mr-2">₹{formatINR(tour.price)}</div>
                     <span className="text-xs text-muted-foreground">per person</span>
                   </div>
                 </div>

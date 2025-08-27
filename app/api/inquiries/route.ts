@@ -21,10 +21,14 @@ export async function POST(request: NextRequest) {
     const n8nPayload = {
       name,
       phone,
+      email: body.email || '',
+      message: body.message || '',
+      tourTitle: body.tourTitle || '',
       destination: body.destination || '',
       travelDate: body.travelDate || '',
       duration: body.duration || '',
-      travelers: body.travelers || {},
+      travelers: body.travelers || body.travellers || {},
+      departure: body.departure || '',
       submittedAt: body.submittedAt || new Date().toISOString(),
       source: body.source || 'Website Inquiry'
     }

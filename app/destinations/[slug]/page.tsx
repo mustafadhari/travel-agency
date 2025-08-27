@@ -1,9 +1,11 @@
 import { notFound, redirect } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { MapPin, Calendar, Users, Clock, ChevronLeft } from "lucide-react"
+import { MapPin, Calendar, Users, Clock, ChevronLeft, Star } from "lucide-react"
 import Link from "next/link"
 import { DESTINATIONS } from "@/lib/destinations"
+import { getTours } from "@/lib/tours"
+import RequestCallbackButton from "@/components/request-callback-button"
 
 export default async function DestinationPage({
   params,
@@ -32,17 +34,40 @@ export default async function DestinationPage({
     bestTime: destination.bestTime,
   }
 
+  // Filter tours that belong to this destination (match by destination name or location)
+  const allTours = getTours()
+  const toursForDestination = allTours.filter(tour => {
+    const dl = destination.name.toLowerCase()
+    const loc = (destination.location || destination.name).toLowerCase()
+    return (
+      tour.location.toLowerCase().includes(dl) ||
+      tour.location.toLowerCase().includes(loc) ||
+      tour.country.toLowerCase().includes(loc)
+    )
+  })
+
   return (
     <main className="pt-28">
       {/* Hero Section */}
       <div className="relative h-[60vh] md:h-[70vh]">
-        <Image
-          src={destination.image || "/placeholder.svg"}
-          alt={destination.name}
-          fill
-          className="object-cover"
-          priority
-        />
+        {destination.video ? (
+          <video
+            src={destination.video}
+            className="absolute inset-0 w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <Image
+            src={destination.image || "/placeholder.svg"}
+            alt={destination.name}
+            fill
+            className="object-cover"
+            priority
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         <div className="absolute inset-0 flex items-end">
           <div className="container mx-auto px-4 pb-16">
@@ -66,36 +91,28 @@ export default async function DestinationPage({
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold mb-4">Destination Overview</h2>
-            <p className="text-muted-foreground mb-8">{destinationDetails.description}</p>
-
-            <h2 className="text-2xl font-bold mb-4">Highlights</h2>
-            <ul className="space-y-2 mb-8">
-              {destinationDetails.highlights.map((highlight, index) => (
-                <li key={index} className="flex items-start">
-                  <div className="h-6 w-6 rounded-full bg-brand-teal/20 flex items-center justify-center mr-3 mt-0.5">
-                    <span className="text-brand-teal text-sm">✓</span>
-                  </div>
-                  <span>{highlight}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Dynamic Images Section */}
-            {destination.images && destination.images.length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-4">Gallery</h2>
-                <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-                  {destination.images.map((image, index) => (
-                    <div key={index} className="break-inside-avoid mb-4 rounded-xl overflow-hidden">
-                      <Image
-                        src={image}
-                        alt={`${destination.name} gallery ${index + 1}`}
-                        width={400}
-                        height={300}
-                        className="w-full h-auto object-cover"
-                      />
-                    </div>
+            {/* Tours in this Destination */}
+            {toursForDestination.length > 0 && (
+              <div className="mb-10">
+                <h2 className="text-2xl font-bold mb-4">Tours in {destination.name}</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {toursForDestination.map(tour => (
+                    <Link key={tour.id} href={`/tours/${tour.slug}`} className="group block rounded-xl overflow-hidden border">
+                      <div className="relative aspect-[4/3]">
+                        <Image src={tour.image || "/placeholder.svg"} alt={tour.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                        {tour.featured && (
+                          <span className="absolute top-3 right-3 bg-brand-teal text-white text-xs font-medium px-2 py-1 rounded-full">Featured</span>
+                        )}
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-semibold text-lg mb-1 group-hover:text-brand-teal transition-colors">{tour.title}</h3>
+                        <div className="flex items-center justify-between text-sm text-muted-foreground">
+                          <span className="flex items-center"><Calendar className="h-4 w-4 mr-1" />{tour.duration}</span>
+                          <span className="flex items-center"><Star className="h-4 w-4 text-brand-teal mr-1" />{tour.rating}</span>
+                        </div>
+                        <div className="mt-3 text-brand-teal font-bold">₹{tour.price} <span className="text-xs text-muted-foreground font-normal">per person</span></div>
+                      </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -139,12 +156,11 @@ export default async function DestinationPage({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <Button className="w-full bg-brand-teal hover:bg-brand-navy">Book This Trip</Button>
-                <Button variant="outline" className="w-full">
-                  Request Custom Itinerary
-                </Button>
-              </div>
+              <RequestCallbackButton 
+                group={false} 
+                tourTitle={`${destination.name} Destination`}
+                tourLocation={destination.location}
+              />
             </div>
           </div>
         </div>

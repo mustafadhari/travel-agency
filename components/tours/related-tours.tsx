@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { MapPin, Calendar, Star } from "lucide-react"
 import { getTours } from "@/lib/tours"
+import { formatINR } from "@/lib/utils"
 
 interface RelatedToursProps {
   currentTourId: number
@@ -51,7 +52,7 @@ export default function RelatedTours({ currentTourId }: RelatedToursProps) {
               <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{tour.description}</p>
               <div className="flex justify-between items-center">
                 <div className="font-bold text-brand-teal">
-                  ${tour.price}
+                  ₹{formatINR(tour.price)}
                   <span className="text-sm text-muted-foreground font-normal">/person</span>
                 </div>
                 <Link href={`/tours/${tour.slug}`}>

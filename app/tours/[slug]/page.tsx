@@ -3,7 +3,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { MapPin, Calendar, Users, Star, Clock, Utensils, Home, Globe, Thermometer, CreditCard } from "lucide-react"
+import { MapPin, Calendar, Users, Star } from "lucide-react"
 import { getTourBySlug } from "@/lib/tours"
 import TourGallery from "@/components/tours/tour-gallery"
 import TourItinerary from "@/components/tours/tour-itinerary"
@@ -11,7 +11,7 @@ import TourInclusions from "@/components/tours/tour-inclusions"
 import TourEssentials from "@/components/tours/tour-essentials"
 import TourPricing from "@/components/tours/tour-pricing"
 import RelatedTours from "@/components/tours/related-tours"
-import TourInquiryForm from "@/components/tours/tour-inquiry-form"
+import RequestCallbackButton from "@/components/request-callback-button"
 
 interface TourPageProps {
   params: Promise<{ slug: string }>
@@ -24,6 +24,8 @@ export default async function TourPage({ params }: TourPageProps) {
   if (!tour) {
     notFound()
   }
+
+  const isGroupTour = /group/i.test(tour.type || "")
 
   return (
     <div className="container mx-auto px-4 pt-28 pb-12">
@@ -38,30 +40,42 @@ export default async function TourPage({ params }: TourPageProps) {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6 text-white">
-            <div className="flex items-center gap-2 mb-2">
-              <Badge variant="outline" className="bg-white/20 backdrop-blur-sm border-white/10 text-white">
+          <div className="absolute bottom-4 left-4 right-4 text-white">
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <Badge variant="outline" className="bg-white/20 backdrop-blur-sm border-white/10 text-white text-xs">
                 {tour.type}
               </Badge>
               {tour.featured && (
-                <Badge className="bg-brand-teal">Featured</Badge>
+                <Badge className="bg-brand-teal text-xs">Featured</Badge>
               )}
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">{tour.title}</h1>
-            <div className="flex items-center gap-4 text-sm">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 leading-tight">{tour.title}</h1>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm">
               <div className="flex items-center">
-                <MapPin className="h-4 w-4 mr-1" />
-                {tour.location}
+                <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
+                <span className="truncate">{tour.location}</span>
               </div>
               <div className="flex items-center">
-                <Calendar className="h-4 w-4 mr-1" />
-                {tour.duration}
+                <Calendar className="h-4 w-4 mr-1 flex-shrink-0" />
+                <span>{tour.duration}</span>
               </div>
               <div className="flex items-center">
-                <Star className="h-4 w-4 mr-1 fill-current" />
-                {tour.rating} ({tour.reviews} reviews)
+                <Star className="h-4 w-4 mr-1 fill-current flex-shrink-0" />
+                <span>{tour.rating} ({tour.reviews} reviews)</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Mobile Pricing & Callback Section */}
+        <div className="lg:hidden mb-8">
+          <div className="space-y-4">
+            <TourPricing price={tour.price} isGroup={isGroupTour} />
+            <RequestCallbackButton 
+              group={isGroupTour} 
+              tourTitle={tour.title}
+              tourLocation={tour.location}
+            />
           </div>
         </div>
 
@@ -95,9 +109,6 @@ export default async function TourPage({ params }: TourPageProps) {
               </CardContent>
             </Card>
 
-            {/* Gallery */}
-            <TourGallery images={tour.images} />
-
             {/* Itinerary */}
             <TourItinerary itinerary={tour.itinerary} />
 
@@ -108,33 +119,22 @@ export default async function TourPage({ params }: TourPageProps) {
             </div>
 
             {/* Essentials */}
-            <TourEssentials />
+            <TourEssentials tour={tour} />
+            {/* Gallery */}
+            <TourGallery images={tour.images} />
           </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Pricing & Booking */}
-            <TourPricing price={tour.price} />
+          
+          {/* Desktop Sidebar */}
+          <div className="hidden lg:block space-y-6">
+            {/* Pricing */}
+            <TourPricing price={tour.price} isGroup={isGroupTour} />
             <div className="mt-6">
-              <Button className="w-full mb-3 bg-brand-teal hover:bg-brand-navy text-white">Book Now</Button>
-              <Button variant="outline" className="w-full">
-                Download Itinerary
-              </Button>
+              <RequestCallbackButton 
+                group={isGroupTour} 
+                tourTitle={tour.title}
+                tourLocation={tour.location}
+              />
             </div>
-            <div className="mt-8">
-              <h3 className="text-lg font-semibold mb-4">Tour Highlights</h3>
-              <ul className="space-y-2">
-                {tour.highlights.map((highlight, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-brand-teal mr-2">✓</span>
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Inquiry Form */}
-            <TourInquiryForm tourId={tour.id} tourTitle={tour.title} />
           </div>
         </div>
       </div>

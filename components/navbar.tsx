@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Search, Globe, Sun, Moon, ChevronDown } from "lucide-react"
+import { Menu, Search, Globe, Sun, Moon, ChevronDown, Phone } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -36,13 +36,26 @@ export default function Navbar() {
     return pathname === path
   }
 
+  const openWhatsApp = () => {
+    const phoneNumber = "+918652681571" // Replace with your actual company number
+    const message = "Hi! I'm interested in booking a tour. Can you help me?"
+    const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, '_blank')
+  }
+
   const destinationItems = DESTINATIONS.map((d) => ({ name: d.name, path: `/destinations/${d.slug}`, category: d.category }))
   const domesticItems = destinationItems.filter((d) => d.category === "domestic")
   const internationalItems = destinationItems.filter((d) => d.category === "international")
   const navLinks = [
     {
-      name: "Destinations",
-      path: "/destinations",
+      name: "International",
+      path: "/destinations/international",
+      dropdown: true,
+      items: [],
+    },
+    {
+      name: "India",
+      path: "/destinations/india",
       dropdown: true,
       items: [],
     },
@@ -74,10 +87,10 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-20 items-center justify-between">
           <Link href="/" className="flex items-center">
-            <div className="relative h-12 w-48 md:h-16 md:w-58">
+            <div className="relative h-10 w-32 sm:h-12 sm:w-40 md:h-16 md:w-58">
               <Image
                 src="/images/logo.png"
-                alt="EasyOurTour"
+                alt="EasYourTour"
                 fill
                 className={cn(
                   "object-contain",
@@ -121,38 +134,37 @@ export default function Navbar() {
                         transition={{ duration: 0.2 }}
                         className={cn(
                           "absolute top-full left-0 mt-2 rounded-2xl border border-gray-200/60 dark:border-gray-800/60 bg-white/95 dark:bg-gray-900/95 backdrop-blur shadow-xl",
-                          link.name === "Services" ? "w-48" : "w-[720px]"
+                          link.name === "Services" ? "w-48" : "w-64"
                         )}
                       >
-                        {link.name === "Destinations" ? (
-                          <div className="grid grid-cols-2 gap-8 p-5">
-                            <div>
-                              <div className="mb-2 text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">Domestic</div>
-                              <div className="grid grid-cols-1 gap-1">
-                                {domesticItems.map((item) => (
-                                  <Link
-                                    key={item.path}
-                                    href={item.path}
-                                    className="px-2 py-1.5 text-sm rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                                  >
-                                    {item.name}
-                                  </Link>
-                                ))}
-                              </div>
+                        {link.name === "International" ? (
+                          <div className="p-3 w-64">
+                            <div className="mb-2 text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">International Destinations</div>
+                            <div className="grid grid-cols-1 gap-1">
+                              {internationalItems.map((item) => (
+                                <Link
+                                  key={item.path}
+                                  href={item.path}
+                                  className="px-2 py-1.5 text-sm rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                >
+                                  {item.name}
+                                </Link>
+                              ))}
                             </div>
-                            <div>
-                              <div className="mb-2 text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">International</div>
-                              <div className="grid grid-cols-1 gap-1">
-                                {internationalItems.map((item) => (
-                                  <Link
-                                    key={item.path}
-                                    href={item.path}
-                                    className="px-2 py-1.5 text-sm rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                                  >
-                                    {item.name}
-                                  </Link>
-                                ))}
-                              </div>
+                          </div>
+                        ) : link.name === "India" ? (
+                          <div className="p-3 w-64">
+                            <div className="mb-2 text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">India Destinations</div>
+                            <div className="grid grid-cols-1 gap-1">
+                              {domesticItems.map((item) => (
+                                <Link
+                                  key={item.path}
+                                  href={item.path}
+                                  className="px-2 py-1.5 text-sm rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                >
+                                  {item.name}
+                                </Link>
+                              ))}
                             </div>
                           </div>
                         ) : link.name === "Services" ? (
@@ -195,50 +207,9 @@ export default function Navbar() {
 
 
           <div className="hidden lg:flex items-center gap-2">
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className={cn(
-                "p-2 rounded-full transition-colors",
-                isSolid ? "hover:bg-gray-100 dark:hover:bg-gray-800" : "hover:bg-white/20",
-              )}
-            >
-              <Search size={18} className={isSolid ? "text-foreground" : "text-white"} />
-            </button>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className={cn(
-                    "p-2 rounded-full transition-colors",
-                    isSolid ? "hover:bg-gray-100 dark:hover:bg-gray-800" : "hover:bg-white/20",
-                  )}
-                >
-                  <Globe size={18} className={isSolid ? "text-foreground" : "text-white"} />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>English</DropdownMenuItem>
-                <DropdownMenuItem>Español</DropdownMenuItem>
-                <DropdownMenuItem>Français</DropdownMenuItem>
-                <DropdownMenuItem>Deutsch</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className={cn(
-                "p-2 rounded-full transition-colors",
-                isSolid ? "hover:bg-gray-100 dark:hover:bg-gray-800" : "hover:bg-white/20",
-              )}
-            >
-              {theme === "dark" ? (
-                <Sun size={18} className={isSolid ? "text-foreground" : "text-white"} />
-              ) : (
-                <Moon size={18} className={isSolid ? "text-foreground" : "text-white"} />
-              )}
-            </button>
 
             <Button
+              onClick={openWhatsApp}
               className={cn(
                 "ml-2 rounded-full",
                 isSolid
@@ -246,7 +217,8 @@ export default function Navbar() {
                   : "bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white",
               )}
             >
-              Book Now
+              <Phone className="h-4 w-4 mr-2" />
+              +91 86526 81571
             </Button>
           </div>
 
@@ -262,30 +234,36 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex justify-center mb-8 mt-4">
-                <div className="relative h-10 w-40">
-                  <Image src="/images/logo.png" alt="EasyOurTour" fill className="object-contain" />
+                <div className="relative h-10 w-32 sm:h-12 sm:w-40">
+                  <Image src="/images/logo.png" alt="EasYourTour" fill className="object-contain" />
                 </div>
               </div>
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) =>
                   link.dropdown ? (
                     <div key={link.name} className="space-y-2">
-                      <Link href={link.path} onClick={() => setIsOpen(false)} className="font-medium text-lg">
-                        {link.name}
-                      </Link>
+                      <span className="font-medium text-lg">{link.name}</span>
                       <div className="pl-4 space-y-2 border-l border-gray-200 dark:border-gray-800">
-                        <div className="text-xs uppercase text-gray-500">Domestic</div>
-                        {domesticItems.map((item) => (
-                          <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
-                            {item.name}
-                          </Link>
-                        ))}
-                        <div className="pt-2 text-xs uppercase text-gray-500">International</div>
-                        {internationalItems.map((item) => (
-                          <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
-                            {item.name}
-                          </Link>
-                        ))}
+                        {link.name === "International" && (
+                          <>
+                            <div className="text-xs uppercase text-gray-500">International</div>
+                            {internationalItems.map((item) => (
+                              <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
+                                {item.name}
+                              </Link>
+                            ))}
+                          </>
+                        )}
+                        {link.name === "India" && (
+                          <>
+                            <div className="text-xs uppercase text-gray-500">India</div>
+                            {domesticItems.map((item) => (
+                              <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
+                                {item.name}
+                              </Link>
+                            ))}
+                          </>
+                        )}
                       </div>
                     </div>
                   ) : (
@@ -302,7 +280,10 @@ export default function Navbar() {
                   ),
                 )}
                 <div className="mt-4 pt-4 border-t">
-                  <Button className="w-full bg-brand-teal hover:bg-brand-navy">Book Now</Button>
+                  <Button onClick={openWhatsApp} className="w-full bg-brand-teal hover:bg-brand-navy">
+                    <Phone className="h-4 w-4 mr-2" />
+                    +91 86526 81571
+                  </Button>
                 </div>
               </nav>
             </SheetContent>

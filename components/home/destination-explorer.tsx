@@ -13,7 +13,7 @@ const destinations = DESTINATIONS
 const HOME_LIMIT = 6
 
 export default function DestinationExplorer() {
-  const [activeTab, setActiveTab] = useState<"international" | "domestic">("international")
+  const [activeTab, setActiveTab] = useState<"international" | "domestic">("domestic")
   const [filteredDestinations, setFilteredDestinations] = useState<typeof destinations>(destinations.slice(0, HOME_LIMIT))
   const { ref, inView } = useInView({
     triggerOnce: true,

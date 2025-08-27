@@ -1,25 +1,30 @@
 import { Calendar, Clock, Users, Utensils, Home, Globe, Thermometer, CreditCard } from "lucide-react"
+import { Tour } from "@/lib/tours"
 
-export default function TourEssentials() {
+interface TourEssentialsProps {
+  tour: Tour
+}
+
+export default function TourEssentials({ tour }: TourEssentialsProps) {
   const essentials = [
     {
       title: "Best Time to Visit",
-      description: "March to October",
+      description: tour.best_time,
       icon: <Calendar className="h-5 w-5 text-brand-teal mr-2" />,
     },
     {
       title: "Duration",
-      description: "8 Days / 7 Nights",
+      description: tour.duration,
       icon: <Clock className="h-5 w-5 text-brand-teal mr-2" />,
     },
     {
       title: "Group Size",
-      description: "Max 12 people",
+      description: `Max ${tour.max_participants} people`,
       icon: <Users className="h-5 w-5 text-brand-teal mr-2" />,
     },
     {
       title: "Meals Included",
-      description: "Breakfast & Dinner",
+      description: tour.meals,
       icon: <Utensils className="h-5 w-5 text-brand-teal mr-2" />,
     },
   ]
@@ -27,22 +32,22 @@ export default function TourEssentials() {
   const accommodation = [
     {
       title: "Accommodation",
-      description: "4-star hotels & resorts",
+      description: tour.accommodation,
       icon: <Home className="h-5 w-5 text-brand-teal mr-2" />,
     },
     {
       title: "Transportation",
-      description: "Private AC vehicle",
+      description: tour.transportation,
       icon: <Globe className="h-5 w-5 text-brand-teal mr-2" />,
     },
     {
       title: "Weather",
-      description: "Tropical climate",
+      description: tour.weather,
       icon: <Thermometer className="h-5 w-5 text-brand-teal mr-2" />,
     },
     {
       title: "Payment",
-      description: "Secure online booking",
+      description: tour.payment_terms,
       icon: <CreditCard className="h-5 w-5 text-brand-teal mr-2" />,
     },
   ]
@@ -61,9 +66,8 @@ export default function TourEssentials() {
         ))}
       </div>
 
-      <div>
-        <h3 className="text-xl font-semibold mb-4">Trip Essentials</h3>
-
+      <div className="bg-muted p-6 rounded-lg">
+        <h3 className="text-lg font-semibold mb-4">Additional Information</h3>
         <div className="space-y-4">
           {accommodation.map((item, index) => (
             <div key={index}>
