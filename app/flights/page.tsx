@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 const airlines = [
   { name: "Emirates", logo: "✈️", rating: 4.8, routes: "150+ destinations" },
-  { name: "Qatar Airways", logo: "✈️", rating: 4.7, routes: "160+ destinations" },
-  { name: "Singapore Airlines", logo: "✈️", rating: 4.9, routes: "130+ destinations" },
-  { name: "Lufthansa", logo: "✈️", rating: 4.6, routes: "220+ destinations" },
-  { name: "British Airways", logo: "✈️", rating: 4.5, routes: "200+ destinations" },
+  { name: "Indigo", logo: "✈️", rating: 4.7, routes: "160+ destinations" },
+  { name: "SpiceJet", logo: "✈️", rating: 4.9, routes: "130+ destinations" },
+  { name: "Air Arabia", logo: "✈️", rating: 4.6, routes: "220+ destinations" },
+  { name: "Vistara", logo: "✈️", rating: 4.5, routes: "200+ destinations" },
   { name: "Air India", logo: "✈️", rating: 4.3, routes: "100+ destinations" },
 ]
 
@@ -42,8 +42,8 @@ const benefits = [
 ]
 
 const popularRoutes = [
-  { from: "Mumbai", to: "Dubai", price: "₹25,000", duration: "3h 15m" },
-  { from: "Delhi", to: "London", price: "₹45,000", duration: "8h 30m" },
+  { from: "Mumbai", to: "Dubai", price: "₹15,000", duration: "3h 15m" },
+  { from: "Dubai", to: "Ahmedabad", price: "₹15,000", duration: "3h 30m" },
   { from: "Bangalore", to: "Singapore", price: "₹18,000", duration: "4h 45m" },
   { from: "Chennai", to: "Kuala Lumpur", price: "₹22,000", duration: "4h 20m" },
   { from: "Hyderabad", to: "Abu Dhabi", price: "₹28,000", duration: "3h 45m" },
@@ -82,8 +82,8 @@ export default function FlightsPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-brand-navy via-brand-teal to-brand-light text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0 bg-[url('/images/world.svg')] bg-no-repeat bg-center bg-cover opacity-10"></div>
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0 bg-[url('/images/world.svg')] bg-no-repeat bg-center bg-cover opacity-5"></div>
         
         <div className="relative container mx-auto px-4 pt-32 pb-20">
           <div className="max-w-4xl mx-auto text-center">
@@ -93,12 +93,12 @@ export default function FlightsPage() {
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
               Book premium flights to destinations worldwide with exclusive deals and offers from top airlines
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <RequestCallbackButton 
                 group={false}
                 serviceType="Flight Booking"
                 serviceLocation="Worldwide"
-                className="bg-white text-brand-navy hover:bg-white/90 font-display font-semibold px-8 py-4 text-lg"
+                className="bg-white text-brand-navy hover:bg-white/90 font-display font-semibold px-8 py-4 text-lg rounded-lg transition-colors"
               >
                 Book Your Flight
               </RequestCallbackButton>

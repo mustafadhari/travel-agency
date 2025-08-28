@@ -74,12 +74,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/hotels" className="text-gray-400 hover:text-brand-teal transition-colors">
+                <Link href="/visa" className="text-gray-400 hover:text-brand-teal transition-colors">
                 Visa Assistance
                 </Link>
               </li>
               <li>
-                <Link href="/visa" className="text-gray-400 hover:text-brand-teal transition-colors">
+                <Link href="/tours" className="text-gray-400 hover:text-brand-teal transition-colors">
                   Tour Packages
                 </Link>
               </li>
@@ -89,7 +89,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/transportation" className="text-gray-400 hover:text-brand-teal transition-colors">
+                <Link href="/hotels" className="text-gray-400 hover:text-brand-teal transition-colors">
                 Hotel Reservations
                 </Link>
               </li>
@@ -110,7 +110,7 @@ export default function Footer() {
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 text-brand-teal" />
                 <span className="text-gray-400">
-                  <a href="tel:+918652681571">+91 86526-81571</a>
+                  <a href="tel:+918652681571">+91 86526-81571</a> / <a href="tel:+971585087152">+971 58 5087152</a>
                 </span>
               </li>
               <li className="flex items-center">

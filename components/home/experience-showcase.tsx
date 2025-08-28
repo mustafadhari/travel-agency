@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Compass, Briefcase, Utensils, Camera, Mountain, Plane, ShieldCheck } from "lucide-react"
@@ -136,7 +137,9 @@ export default function ExperienceShowcase() {
                   We curate exceptional travel services tailored to your preferences. From adrenaline-pumping
                   adventures to serene retreats, discover the world your way.
                 </p>
-                <Button className="bg-brand-teal hover:bg-brand-navy">Explore Services</Button>
+                <Link href="/services">
+                  <Button className="bg-brand-teal hover:bg-brand-navy">Explore Services</Button>
+                </Link>
               </motion.div>
             </div>
 

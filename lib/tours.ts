@@ -453,6 +453,136 @@ export const TOURS: Tour[] = [
     ],
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
+  },
+  {
+    id: 5,
+    title: "Jaipur, Jodhpur & Jaisalmer 6 Days / 5 Nights",
+    slug: "jaipur-jodhpur-jaisalmer-6d5n",
+    location: "Rajasthan",
+    country: "India",
+    continent: "Asia",
+    duration: "6 Days / 5 Nights",
+    duration_days: 6,
+    type: "Private Tour",
+    price: 15499,
+    rating: 4.8,
+    reviews: 174,
+    image: "/images/rajasthan-jjj2.jpeg",
+    description: "Uncover Rajasthan’s royal palaces, blue-washed lanes, and golden dunes on this immersive 6-day journey. Wander through Jaipur’s regal forts, dive into Jodhpur’s hilltop citadel, and chase sunsets over the Sam Sand Dunes in Jaisalmer—complete with a camel ride and cultural evening.",
+    featured: true,
+    difficulty_level: "Easy",
+    max_participants: 2,
+    highlights: [
+      "Jaipur City Palace, Hawa Mahal photo stop, and Jantar Mantar",
+      "Grand Amber Fort with optional jeep/elephant ride",
+      "Panoramic views from Nahargarh and a stop at Jal Mahal promenade",
+      "Mehrangarh Fort and the serene marble cenotaphs of Jaswant Thada",
+      "Umaid Bhawan Palace Museum visit",
+      "Golden Jaisalmer Fort and ornate havelis: Patwon, Nathmal, Salim Singh",
+      "Camel ride at Sam Sand Dunes with folk dance and dinner experience",
+      "Sunset by Gadisar Lake and stroll through bustling local bazaars"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive Jaipur – Old City & Museums",
+        description: "Meet the representative on arrival and transfer to the hotel. Explore Jaipur’s royal quarter: City Palace (with in-house museums), a photo halt at Hawa Mahal, and the astronomical marvel Jantar Mantar; optional Birla Temple if time allows.",
+        activities: [
+          "Airport/rail pickup and hotel check-in",
+          "City Palace complex",
+          "Hawa Mahal photo stop",
+          "Jantar Mantar visit",
+          "Optional Birla Temple"
+        ]
+      },
+      {
+        day: 2,
+        title: "Amer Fort, Jal Mahal & Nahargarh",
+        description: "Head to the UNESCO-listed Amer Fort for its courtyards and mirror-work halls. Pause along the Jal Mahal promenade, then drive up to Nahargarh Fort for sweeping city views; browse Bapu and Johari Bazaar in the evening.",
+        activities: [
+          "Amer (Amber) Fort tour",
+          "Jal Mahal photo stop",
+          "Nahargarh Fort viewpoint",
+          "Evening market time: Bapu, Johari Bazaar"
+        ]
+      },
+      {
+        day: 3,
+        title: "Jaipur to Jodhpur – Fort & Cenotaphs",
+        description: "Drive to Jodhpur and check in. Explore the mighty Mehrangarh Fort, then the quiet elegance of Jaswant Thada cenotaphs; wander the vibrant Clock Tower (Ghanta Ghar) and Sardar Market at dusk.",
+        activities: [
+          "Scenic drive Jaipur to Jodhpur",
+          "Mehrangarh Fort visit",
+          "Jaswant Thada",
+          "Clock Tower & Sardar Market walk"
+        ]
+      },
+      {
+        day: 4,
+        title: "Jodhpur to Jaisalmer – Lakeside Sunset",
+        description: "Before leaving, visit Umaid Bhawan Palace Museum. Continue to Jaisalmer, the Golden City; check in and enjoy a sunset amble by Gadisar Lake.",
+        activities: [
+          "Umaid Bhawan Palace Museum",
+          "Drive to Jaisalmer",
+          "Hotel check-in",
+          "Gadisar Lake sunset"
+        ]
+      },
+      {
+        day: 5,
+        title: "Golden Fort, Havelis & Sam Dunes",
+        description: "Discover the living Jaisalmer Fort and its ornate havelis—Patwon ki Haveli, Nathmal ki Haveli, Salim Singh ki Haveli. By afternoon, transfer to Sam Sand Dunes for a camel ride over golden sands and a cultural evening at desert camp.",
+        activities: [
+          "Jaisalmer Fort walk",
+          "Patwon, Nathmal & Salim Singh Havelis",
+          "Transfer to Sam Sand Dunes",
+          "Camel ride at sunset",
+          "Folk dance, music and dinner at camp",
+          "Overnight in Swiss tent"
+        ]
+      },
+      {
+        day: 6,
+        title: "Jaisalmer to Jodhpur – Departure",
+        description: "After breakfast, check out and drive to Jodhpur for the drop at airport or railway station—tour ends with cherished desert memories.",
+        activities: [
+          "Breakfast and check-out",
+          "Drive to Jodhpur",
+          "Airport/railway drop"
+        ]
+      }
+    ],
+    inclusions: [
+      "Airport/rail pickup and drop as per timings",
+      "Comfortable private vehicle (Sedan/SUV/Tempo as per group size)",
+      "5 nights accommodation: 2N Jaipur, 1N Jodhpur, 2N Jaisalmer (1N hotel + 1N Swiss tent)",
+      "Daily breakfast from Day 2 to Day 6 and 1 dinner at desert camp",
+      "Camel ride in Sam Sand Dunes (standard sunset ride)",
+      "Driver allowances, tolls, parking, interstate taxes"
+    ],
+    exclusions: [
+      "Air/rail fares",
+      "Monument entry and camera fees",
+      "Guide charges unless specified",
+      "Meals not mentioned and beverages",
+      "Jeep dune bashing/jeep safari in dunes",
+      "Personal expenses, tips, and insurance",
+      "5% GST and any festival/peak season surcharges"
+    ],
+    accommodation: "Handpicked heritage-style hotels in cities and Swiss tented desert camp in Sam Dunes (subject to availability)",
+    transportation: "Private air-conditioned vehicle for the entire journey",
+    meals: "Breakfast only",
+    best_time: "October to March for pleasant weather; April–June is warmer but clear skies",
+    weather: "Semi-arid desert climate; days warm to hot, evenings cooler in winter months",
+    visa_requirements: "Not applicable for Indian citizens; foreign nationals require valid visa and ID",
+    payment_terms: "30% advance to confirm; balance due before check-in or as per voucher",
+    cancellation_policy: "Free cancellation up to 15 days prior; 50% between 8–14 days; no refund within 7 days",
+    images: [
+      "/images/rajasthan-jjj1.jpeg",
+      "/images/rajasthan-jjj3.jpeg",
+    ],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   }
 ]
 
