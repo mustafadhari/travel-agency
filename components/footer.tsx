@@ -19,7 +19,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="mb-6 text-gray-400 max-w-md">
-              Making your travel easy and affordable since 2010. We specialize in crafting unforgettable journeys
+              Making your travel easy and affordable since 2024. We specialize in crafting unforgettable journeys
               tailored to your preferences and budget.
             </p>
             <div className="flex space-x-4">

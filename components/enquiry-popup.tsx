@@ -24,7 +24,7 @@ export default function EnquiryPopup() {
   const [isGroup, setIsGroup] = useState(false)
   const [departure, setDeparture] = useState("")
   const [travellers, setTravellers] = useState(1)
-  const [tourInfo, setTourInfo] = useState<{ title?: string; location?: string }>({})
+  const [tourInfo, setTourInfo] = useState<{ title?: string; location?: string; serviceType?: string; serviceLocation?: string }>({})
 
   const isHome = pathname === "/"
 
@@ -33,8 +33,8 @@ export default function EnquiryPopup() {
       const detail = (e as CustomEvent).detail || {}
       setIsGroup(!!detail.group)
       setTourInfo({
-        title: detail.tourTitle || "",
-        location: detail.tourLocation || ""
+        title: detail.tourTitle || detail.serviceType || "",
+        location: detail.tourLocation || detail.serviceLocation || ""
       })
       setOpen(true)
     }
@@ -102,7 +102,7 @@ export default function EnquiryPopup() {
           {tourInfo.title && (
             <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <p className="text-sm text-gray-600 dark:text-gray-300">
-                <strong>Tour:</strong> {tourInfo.title}
+                <strong>Service:</strong> {tourInfo.title}
                 {tourInfo.location && <><br /><strong>Location:</strong> {tourInfo.location}</>}
               </p>
             </div>

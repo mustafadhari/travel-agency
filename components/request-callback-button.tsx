@@ -7,13 +7,19 @@ interface RequestCallbackButtonProps {
   className?: string
   tourTitle?: string
   tourLocation?: string
+  serviceType?: string
+  serviceLocation?: string
+  children?: React.ReactNode
 }
 
 export default function RequestCallbackButton({ 
   group = false, 
   className,
   tourTitle,
-  tourLocation 
+  tourLocation,
+  serviceType,
+  serviceLocation,
+  children
 }: RequestCallbackButtonProps) {
   return (
     <Button
@@ -22,11 +28,13 @@ export default function RequestCallbackButton({
         detail: { 
           group,
           tourTitle,
-          tourLocation
+          tourLocation,
+          serviceType,
+          serviceLocation
         } 
       }))}
     >
-      {tourTitle ? "Inquire about this tour" : "Request a callback"}
+      {children || (tourTitle ? "Inquire about this tour" : "Request a callback")}
     </Button>
   )
 }
