@@ -37,21 +37,21 @@ const visaServices = [
 ]
 
 const countries = [
-  { name: "UAE", flag: "🇦🇪", processing: "3-5 days" },
-  { name: "Oman", flag: "🇴🇲", processing: "5-7 days" },
-  { name: "Qatar", flag: "🇶🇦", processing: "5-7 days" },
-  { name: "Egypt", flag: "🇪🇬", processing: "5-8 days" },
-  { name: "Singapore", flag: "🇸🇬", processing: "3-5 days" },
-  { name: "Malaysia", flag: "🇲🇾", processing: "2-4 days" },
-  { name: "Thailand", flag: "🇹🇭", processing: "2-3 days" },
-  { name: "Vietnam", flag: "🇻🇳", processing: "5-7 days" },
-  { name: "Saudi Arabia - Umrah", flag: "🇸🇦", processing: "5-7 days" },
-  { name: "Bahrain", flag: "🇧🇭", processing: "5-7 days" },
-  { name: "Azerbaijan", flag: "🇦🇿", processing: "5-7 days" },
-  { name: "United States", flag: "🇺🇸", processing: "5-7 days" },
-  { name: "United Kingdom", flag: "🇬🇧", processing: "3-5 days" },
-  { name: "Canada", flag: "🇨🇦", processing: "7-10 days" },
-  { name: "Schengen Countries", flag: "🇪🇺", processing: "10-15 days" },
+  { name: "UAE", flag: "https://flagcdn.com/ae.svg", processing: "3-5 days" },
+  { name: "Oman", flag: "https://flagcdn.com/om.svg", processing: "5-7 days" },
+  { name: "Qatar", flag: "https://flagcdn.com/qa.svg", processing: "5-7 days" },
+  { name: "Egypt", flag: "https://flagcdn.com/eg.svg", processing: "5-8 days" },
+  { name: "Singapore", flag: "https://flagcdn.com/sg.svg", processing: "3-5 days" },
+  { name: "Malaysia", flag: "https://flagcdn.com/my.svg", processing: "2-4 days" },
+  { name: "Thailand", flag: "https://flagcdn.com/th.svg", processing: "2-3 days" },
+  { name: "Vietnam", flag: "https://flagcdn.com/vn.svg", processing: "5-7 days" },
+  { name: "Saudi Arabia - Umrah", flag: "https://flagcdn.com/sa.svg", processing: "5-7 days" },
+  { name: "Bahrain", flag: "https://flagcdn.com/bh.svg", processing: "5-7 days" },
+  { name: "Azerbaijan", flag: "https://flagcdn.com/az.svg", processing: "5-7 days" },
+  { name: "United States", flag: "https://flagcdn.com/us.svg", processing: "30-90 days" },
+  { name: "United Kingdom", flag: "https://flagcdn.com/gb.svg", processing: "15-20 days" },
+  { name: "Canada", flag: "https://flagcdn.com/ca.svg", processing: "20-25 days" },
+  { name: "Schengen Countries", flag: "https://flagcdn.com/eu.svg", processing: "10-15 days" },
 ]
 
 const benefits = [
@@ -191,7 +191,14 @@ export default function VisaPage() {
             {countries.map((country, index) => (
               <Card key={index} className="text-center border-0 shadow-md hover:shadow-lg transition-shadow cursor-pointer">
                 <CardContent className="p-6">
-                  <div className="text-4xl mb-3">{country.flag}</div>
+                  <div className="w-16 h-16 mx-auto mb-3 shadow-md rounded-lg overflow-hidden border border-gray-200">
+                    <img 
+                      src={country.flag} 
+                      alt={`${country.name} flag`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
                   <h3 className="font-display font-semibold mb-1">{country.name}</h3>
                   <p className="text-sm text-brand-teal font-medium">{country.processing}</p>
                 </CardContent>

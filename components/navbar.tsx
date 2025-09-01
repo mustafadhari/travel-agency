@@ -19,6 +19,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [mobileDropdowns, setMobileDropdowns] = useState<{ [key: string]: boolean }>({})
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const isHome = pathname === "/"
@@ -41,6 +42,13 @@ export default function Navbar() {
     const message = "Hi! I'm interested in booking a tour. Can you help me?"
     const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
+  }
+
+  const toggleMobileDropdown = (dropdownName: string) => {
+    setMobileDropdowns(prev => ({
+      ...prev,
+      [dropdownName]: !prev[dropdownName]
+    }))
   }
 
   const destinationItems = DESTINATIONS.map((d) => ({ name: d.name, path: `/destinations/${d.slug}`, category: d.category }))
@@ -242,29 +250,51 @@ export default function Navbar() {
                 {navLinks.map((link) =>
                   link.dropdown ? (
                     <div key={link.name} className="space-y-2">
-                      <span className="font-medium text-lg">{link.name}</span>
-                      <div className="pl-4 space-y-2 border-l border-gray-200 dark:border-gray-800">
-                        {link.name === "International" && (
-                          <>
-                            <div className="text-xs uppercase text-gray-500">International</div>
-                            {internationalItems.map((item) => (
-                              <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
-                                {item.name}
-                              </Link>
-                            ))}
-                          </>
-                        )}
-                        {link.name === "India" && (
-                          <>
-                            <div className="text-xs uppercase text-gray-500">India</div>
-                            {domesticItems.map((item) => (
-                              <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
-                                {item.name}
-                              </Link>
-                            ))}
-                          </>
-                        )}
-                      </div>
+                      <button
+                        onClick={() => toggleMobileDropdown(link.name)}
+                        className="flex items-center justify-between w-full text-left font-medium text-lg hover:text-brand-teal transition-colors"
+                      >
+                        {link.name}
+                        <ChevronDown 
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            mobileDropdowns[link.name] ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+                      {mobileDropdowns[link.name] && (
+                        <div className="pl-4 space-y-2 border-l border-gray-200 dark:border-gray-800">
+                          {link.name === "International" && (
+                            <>
+                              <div className="text-xs uppercase text-gray-500">International</div>
+                              {internationalItems.map((item) => (
+                                <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </>
+                          )}
+                          {link.name === "India" && (
+                            <>
+                              <div className="text-xs uppercase text-gray-500">India</div>
+                              {domesticItems.map((item) => (
+                                <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </>
+                          )}
+                          {link.name === "Services" && (
+                            <>
+                              <div className="text-xs uppercase text-gray-500">Our Services</div>
+                              {link.items.map((item) => (
+                                <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </>
+                          )}
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <Link

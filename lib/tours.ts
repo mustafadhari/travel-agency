@@ -583,6 +583,126 @@ export const TOURS: Tour[] = [
     ],
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
+  },
+  {
+    id: 6,
+    title: "Himachal Delight from Amritsar – Dalhousie, Khajjiar & Dharamshala",
+    slug: "himachal-tour-from-amritsar-5n-6d",
+    location: "Himachal Pradesh",
+    country: "India",
+    continent: "Asia",
+    duration: "6 Days / 5 Nights",
+    duration_days: 6,
+    type: "Private Tour",
+    price: 14999,
+    rating: 4.8,
+    reviews: 137,
+    image: "/images/khajjiar2.jpeg",
+    description: "Begin in the spiritual city of Amritsar and journey into Himachal’s serene hills. Witness the Wagah Border ceremony, bow at the Golden Temple, stroll Dalhousie’s colonial lanes, feel the ‘Mini Switzerland’ charm of Khajjiar, and soak in Dharamshala’s Tibetan vibes and Dhauladhar views—an easy-paced mountain escape with culture, nature, and calm blended perfectly.",
+    featured: true,
+    difficulty_level: "Easy",
+    max_participants: 2,
+    highlights: [
+      "Beating Retreat ceremony at Wagah Border near Amritsar for a high-energy patriotic evening.",
+      "Darshan at Sri Harmandir Sahib (Golden Temple) and a quiet walk through Jallianwala Bagh.",
+      "Colonial-era charm of Dalhousie and pine-scented promenades.",
+      "Day trip to Khajjiar, famed as “Mini Switzerland,” plus Kalatop forest halt.",
+      "Bhagsunag Temple and Waterfall, McLeod Ganj markets, and Naddi Village viewpoints in Dharamshala.",
+      "Comfortable private transfers throughout with time for local food and shopping."
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive Amritsar – Wagah Ceremony",
+        description: "Meet the representative in Amritsar and check in. By evening, drive to the Indo–Pak Wagah Border to witness the vibrant Beating Retreat parade before returning to the hotel.",
+        activities: [
+          "Hotel check-in and rest",
+          "Wagah Border ceremony visit",
+          "Evening return to hotel"
+        ]
+      },
+      {
+        day: 2,
+        title: "Amritsar Darshan – Drive to Dalhousie",
+        description: "After breakfast, visit the Golden Temple and Durgiana Temple, pay homage at Jallianwala Bagh, and browse Hall Bazaar for Punjabi crafts. Later, depart by road to Dalhousie and check in.",
+        activities: [
+          "Golden Temple visit",
+          "Durgiana Temple and Jallianwala Bagh",
+          "Hall Bazaar shopping time",
+          "Scenic drive to Dalhousie, hotel check-in"
+        ]
+      },
+      {
+        day: 3,
+        title: "Khajjiar & Kalatop Excursion",
+        description: "Set out for Khajjiar’s saucer-shaped meadow ringed by deodar forests—often called Mini Switzerland—with a stop at Kalatop for forest views and nature walks; optionally extend to Chamba town. Return to Dalhousie by evening.",
+        activities: [
+          "Drive to Khajjiar meadow",
+          "Kalatop forest halt",
+          "Optional Chamba visit",
+          "Evening in Dalhousie town"
+        ]
+      },
+      {
+        day: 4,
+        title: "Dalhousie to Dharamshala – Hill Drive",
+        description: "Enjoy breakfast and depart for Dharamshala, the gateway to the Dhauladhar. On arrival, check in and visit Bhagsunag Temple & Waterfall, with time for cafés or a sunset glance from Naddi.",
+        activities: [
+          "Scenic transfer to Dharamshala",
+          "Bhagsunag Temple and Waterfall",
+          "Naddi viewpoint or market stroll"
+        ]
+      },
+      {
+        day: 5,
+        title: "Dharamshala & McLeod Ganj Local",
+        description: "Explore the Tibetan quarter—monasteries around the Dalai Lama Temple complex, Kotwali/Temple Road markets, and optionally the HPCA Cricket Stadium or St. John in the Wilderness Church. Leisure evening.",
+        activities: [
+          "Dalai Lama Temple area and Tibetan market",
+          "HPCA Stadium or St. John in the Wilderness (time permitting)",
+          "Café hopping and local shopping"
+        ]
+      },
+      {
+        day: 6,
+        title: "Return to Amritsar – Departure",
+        description: "Check out after breakfast and drive back to Amritsar for the airport or station drop, concluding a culture-meets-mountains getaway.",
+        activities: [
+          "Breakfast and check-out",
+          "Private transfer to Amritsar",
+          "Trip ends with drop-off"
+        ]
+      }
+    ],
+    inclusions: [
+      "Private vehicle for all transfers and sightseeing as per itinerary",
+      "5 nights accommodation on twin sharing (Amritsar 1N, Dalhousie 2N, Dharamshala 2N or similar routing)",
+      "Breakfast daily from Day 2 to Day 6",
+      "Driver charges, tolls, parking, fuel, and permits",
+      "Assistance on arrival and departure"
+    ],
+    exclusions: [
+      "Air/rail fares and airport taxes",
+      "Lunches, dinners, beverages, and snacks unless specified",
+      "Entry tickets, camera fees, and optional activities",
+      "Personal expenses, tips, laundry, phone calls, etc.",
+      "Costs due to landslides, roadblocks, weather or force majeure",
+      "GST and travel insurance"
+    ],
+    accommodation: "Well-reviewed hotels in Amritsar, Dalhousie, and Dharamshala; category can be customized to 3★/4★/boutique stays.",
+    transportation: "Private AC sedan/SUV/Tempo as per group size for the entire tour.",
+    meals: "Breakfast only",
+    best_time: "October to March for crisp mountain air; April to June for pleasant spring–summer.",
+    weather: "Cool hills (Dalhousie/Dharamshala) with pine-scented breezes; warmer plains in Amritsar—layer accordingly.",
+    visa_requirements: "Not required for Indian citizens; foreign nationals must carry a valid visa and passport.",
+    payment_terms: "30% advance to confirm; balance due before check-in or as per voucher",
+    cancellation_policy: "Free cancellation up to 15 days prior; 50% between 8–14 days; no refund within 7 days",
+    images: [
+      "/images/dalhousie.jpeg",
+      "/images/dharamshala.jpeg",
+    ],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   }
 ]
 

@@ -195,9 +195,9 @@ export default function HeroSection() {
           initial={isMounted ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:w-5/12"
+          className="w-full lg:w-5/12"
         >
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-5 border border-white/20">
             <h2 className="text-lg font-bold text-white mb-4 flex items-center">
               <Mail className="mr-2 h-4 w-4 text-brand-light" />
               Get Free Quote
