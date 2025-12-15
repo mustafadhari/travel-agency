@@ -74,7 +74,7 @@ export default function Navbar() {
       items: [
         { name: "Flight Tickets", path: "/flights" },
         { name: "Hotel Bookings", path: "/hotels" },
-        { name: "Visa Assistance", path: "/visa" },
+        { name: "Visa Assistance", path: "/visa", hidden: true },
         { name: "Tour Packages", path: "/tours" },
         { name: "Travel Insurance", path: "/travel-insurance" },
       ],
@@ -178,15 +178,17 @@ export default function Navbar() {
                         ) : link.name === "Services" ? (
                           <div className="p-2 w-40">
                             <div className="grid grid-cols-1 gap-0">
-                              {link.items?.map((item) => (
-                                <Link
-                                  key={item.path}
-                                  href={item.path}
-                                  className="px-2 py-1.5 text-sm rounded text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
+                              {link.items
+                                ?.filter((item) => !("hidden" in item && item.hidden))
+                                .map((item) => (
+                                  <Link
+                                    key={item.path}
+                                    href={item.path}
+                                    className="px-2 py-1.5 text-sm rounded text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                  >
+                                    {item.name}
+                                  </Link>
+                                ))}
                             </div>
                           </div>
                         ) : null}
@@ -286,11 +288,18 @@ export default function Navbar() {
                           {link.name === "Services" && (
                             <>
                               <div className="text-xs uppercase text-gray-500">Our Services</div>
-                              {link.items.map((item) => (
-                                <Link key={item.path} href={item.path} onClick={() => setIsOpen(false)} className="block text-muted-foreground hover:text-brand-teal">
-                                  {item.name}
-                                </Link>
-                              ))}
+                              {link.items
+                                .filter((item) => !("hidden" in item && item.hidden))
+                                .map((item) => (
+                                  <Link
+                                    key={item.path}
+                                    href={item.path}
+                                    onClick={() => setIsOpen(false)}
+                                    className="block text-muted-foreground hover:text-brand-teal"
+                                  >
+                                    {item.name}
+                                  </Link>
+                                ))}
                             </>
                           )}
                         </div>

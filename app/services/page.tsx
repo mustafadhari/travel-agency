@@ -58,6 +58,7 @@ const services = [
     iconColor: "text-purple-600",
     link: "/visa",
     popular: false,
+    hidden: true, // keep data but hide from UI
   },
   {
     title: "Travel Insurance",
@@ -188,7 +189,9 @@ export default function ServicesPage() {
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+            {services
+              .filter((service) => !("hidden" in service && service.hidden))
+              .map((service, index) => (
               <Card key={index} className={`group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${service.popular ? 'ring-2 ring-brand-teal' : ''}`}>
                 {/* Background gradient overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}></div>

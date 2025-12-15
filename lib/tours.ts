@@ -146,7 +146,7 @@ export const TOURS: Tour[] = [
     reviews: 116,
     image: "/images/kerala7.jpg",
     description: "Explore the natural beauty and cultural richness of Kerala on this 4-day tour. From the serene tea gardens of Munnar to the peaceful backwaters of Alleppey, experience relaxation and adventure in God's Own Country.",
-    featured: true,
+    featured: false,
     difficulty_level: "Easy",
     max_participants: 2,
     highlights: [
@@ -700,6 +700,98 @@ export const TOURS: Tour[] = [
     images: [
       "/images/dalhousie.jpeg",
       "/images/dharamshala.jpeg",
+    ],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 7,
+    title: "Udaipur & Jawai Wildlife Adventure – 4 Days / 3 Nights",
+    slug: "udaipur-jawai-safari-3n-4d",
+    location: "Rajasthan",
+    country: "India",
+    continent: "Asia",
+    duration: "4 Days / 3 Nights",
+    duration_days: 4,
+    type: "Private Tour",
+    price: 8999,
+    rating: 4.8,
+    reviews: 89,
+    image: "/images/udaipur3.jpeg",
+    description: "Combine the royal elegance of Udaipur with the wild adventure of Jawai in this unique 4-day tour. Explore magnificent palaces, enjoy sunset boat cruises on Lake Pichola, then venture into leopard country for thrilling wildlife safaris in the rocky hills of Jawai—where leopards roam freely among local Rabari communities.",
+    featured: true,
+    difficulty_level: "Easy",
+    max_participants: 2,
+    highlights: [
+      "Saheliyon ki Bari gardens and Under the Sun Aquarium in Udaipur",
+      "Grand City Palace complex and architectural marvel Jagdish Temple",
+      "Sunset boat cruise on Lake Pichola with palace views",
+      "Vintage Car Museum showcasing royal automotive collection",
+      "Jawai leopard safari in their natural rocky habitat—highest leopard density globally",
+      "Cultural interaction with traditional Rabari shepherd community",
+      "Crocodile spotting and birdwatching at Jawai Dam",
+      "Bonfire evenings under starlit skies in wilderness camps"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive Udaipur – Gardens & Lakes",
+        description: "Meet the representative at Udaipur Airport and transfer to hotel. Begin exploring with Saheliyon ki Bari's marble fountains and royal gardens, visit Under the Sun Aquarium, then enjoy sunset views by Fateh Sagar Lake.",
+        activities: ["Airport pickup and hotel check-in", "Saheliyon ki Bari visit", "Under the Sun Aquarium", "Fateh Sagar Lake sunset"]
+      },
+      {
+        day: 2,
+        title: "Udaipur City Palace & Pichola Cruise",
+        description: "Explore the vintage Car Museum, then the magnificent City Palace with its blend of Rajputana and Mughal architecture. Visit nearby Jagdish Temple before embarking on a scenic sunset boat cruise on Lake Pichola. End with shopping in local markets.",
+        activities: ["Vintage Car Museum", "City Palace complex tour", "Jagdish Temple visit", "Lake Pichola sunset boat cruise", "Market shopping time"]
+      },
+      {
+        day: 3,
+        title: "Udaipur to Jawai – Wildlife Safari Adventure",
+        description: "Drive to Jawai (3.5 hours) through scenic Rajasthan countryside. Check into wildlife camp and explore Jawai Dam for crocodile spotting. Evening leopard safari in the rocky hills with sunset views, followed by cultural interaction with Rabari community and bonfire under stars.",
+        activities: ["Scenic drive to Jawai", "Jawai Dam visit", "Evening leopard safari", "Rabari community interaction", "Bonfire and stargazing"]
+      },
+      {
+        day: 4,
+        title: "Morning Safari & Departure",
+        description: "Optional early morning safari or nature walk for birdwatching, then check out and transfer back to Udaipur Airport (3.5 hours) for departure with wildlife memories.",
+        activities: ["Optional morning safari/birdwatching", "Check-out and departure", "Transfer to Udaipur Airport"]
+      }
+    ],
+    inclusions: [
+      "Private sedan/SUV for all transfers and sightseeing as per itinerary",
+      "3 nights accommodation (2N Udaipur hotel, 1N Jawai wildlife camp/resort)",
+      "Daily breakfast from Day 2 to Day 4",
+      "Evening leopard safari in Jawai with experienced guides",
+      "Driver charges, permits, tolls, fuel, and parking",
+      "Airport pickup and drop assistance"
+    ],
+    exclusions: [
+      "Domestic/international flights and train tickets",
+      "Lunch, dinner, and beverages except breakfast",
+      "Entry fees to monuments, museums, and boat cruise charges",
+      "Personal expenses like tips, laundry, phone calls",
+      "Additional safari rides or adventure activities",
+      "5% GST and travel insurance"
+    ],
+    accommodation: "Heritage-style hotels in Udaipur and comfortable wildlife camps/resorts in Jawai with modern amenities",
+    transportation: "Private air-conditioned vehicle throughout the tour",
+    meals: "Breakfast only",
+    best_time: "October to March for pleasant weather and peak leopard sighting season",
+    weather: "Mild to warm with cool evenings; temperatures 15-30°C in winter months",
+    visa_requirements: "Not required for Indian citizens; foreign nationals must carry a valid visa and passport.",
+    payment_terms: "30% advance to confirm; balance due before check-in or as per voucher",
+    cancellation_policy: "Free cancellation up to 15 days prior; 50% between 8–14 days; no refund within 7 days",
+    images: [
+      "/images/udaipur1.jpeg",
+      "/images/jawai2.jpg",
+      "/images/udaipur2.jpg",
+      "/images/jawai4.webp",
+      "/images/udaipur4.jpg",
+      "/images/jawai5.jpg",
+      "/images/udaipur5.jpg",
+      "/images/jawai6.jpg",
+      "/images/jawai7.jpg"
     ],
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
