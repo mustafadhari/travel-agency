@@ -1,3 +1,5 @@
+import { Hotel } from "lucide-react"
+
 export interface Tour {
   id: number
   title: string
@@ -108,12 +110,12 @@ export const TOURS: Tour[] = [
       "Meet & greet assistance at Kochi arrival",
     ],
     exclusions: [
-        "Air fare / train fare",
-        "Any adventure activities",
-        "Entrance fees to monuments, gardens, and national parks",
-        "Jeep safari at Eravikulam or Periyar",
-        "Lunch & beverages",
-        "Anything not mentioned in inclusions"
+      "Air fare / train fare",
+      "Any adventure activities",
+      "Entrance fees to monuments, gardens, and national parks",
+      "Jeep safari at Eravikulam or Periyar",
+      "Lunch & beverages",
+      "Anything not mentioned in inclusions"
     ],
     accommodation: "Handpicked 3★ honeymoon-friendly resorts (Munnar – At Wood Resort, Thekkady – Spice Residency / Periyar Meadows, Alleppey – Lakeway Resort)",
     transportation: "Private AC Sedan with driver for entire trip",
@@ -795,6 +797,115 @@ export const TOURS: Tour[] = [
     ],
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
+  },
+  {
+    id: 8,
+    title: "Azerbaijan Tour – Baku & Shahdag 6 Nights / 7 Days",
+    slug: "azerbaijan-baku-shahdag-6n7d",
+    location: "Baku, Shahdag, Guba, Gabala",
+    country: "Azerbaijan",
+    continent: "Asia",
+    duration: "6 Nights / 7 Days",
+    duration_days: 7,
+    type: "Private Tour",
+    price: 31999,
+    rating: 4.8,
+    reviews: 52,
+    image: "/images/azerbaijan1.jpg",
+    description: "Discover Azerbaijan’s perfect mix of modern cityscapes, mountain resorts, and ancient fire landscapes on this 7-day journey. Stay in vibrant Baku and scenic Shahdag while enjoying cable cars, coasters, lakes, mud volcanoes, and historic sites with daily breakfast and private transfers.",
+    featured: true,
+    difficulty_level: "Easy",
+    max_participants: 12,
+    highlights: [
+      "Stay 5 nights in central Baku and 1 night in the mountains at Shahdag.​",
+      "Explore Guba region sights including Beshbarmag Mountain, Qechresh Forest, Gudyalchay Canyon, and Red Village.​​",
+      "Enjoy Shahdag Mountain Resort with included coaster and cable car rides.​",
+      "Full-day Baku city tour covering Nizami Street, Icherisheher Old City, Baku Boulevard, Little Venice, and funicular.​",
+      "Day trip to Gabala with Seven Beauties Waterfall, Nohur Lake, and Tufandag/Gabala cable car.​",
+      "Visit Gobustan National Park, Mud Volcanoes, Fire Temple (Ateshgah), and Burning Mountain (Yanardag)."
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Baku",
+        description: "Arrive at Heydar Aliyev International Airport, meet the representative, and transfer to your hotel in Baku. Check in and relax after your journey, with free time in the evening to explore the nearby streets or enjoy dinner on your own.",
+        activities: ["Airport pickup and private transfer", "Hotel check-in and rest", "Free time for self-exploration in Baku"]
+      },
+      {
+        day: 2,
+        title: "Guba Region Tour & Transfer to Shahdag",
+        description: "After breakfast, head towards the scenic Guba region. En route, stop at Beshbarmag Mountain, Qechresh Forest, and Gudyalchay Canyon, and visit the historic Red Village. Later in the day, continue the drive to Shahdag and check in at your mountain hotel.",
+        activities: ["Breakfast at hotel", "Drive to Guba region", "Beshbarmag Mountain viewpoint", "Qechresh Forest and Gudyalchay Canyon", "Red Village visit", "Evening transfer to Shahdag and hotel check-in"]
+      },
+      {
+        day: 3,
+        title: "Candy Cane Mountains, Shahdag Activities & Back to Baku",
+        description: "In the morning, visit the striking Candy Cane Mountains area. Then enjoy Shahdag Mountain Resort’s included activities such as the Shahdag Coaster and cable car ride. By evening, check out and drive back to Baku for an overnight stay.",
+        activities: ["Visit Candy Cane Mountains", "Shahdag Coaster ride", "Shahdag Cable Car experience", "Transfer back to Baku", "Hotel check-in and overnight in Baku"]
+      },
+      {
+        day: 4,
+        title: "Full Day Baku City Tour",
+        description: "Explore Baku’s highlights with a full-day city tour. Walk along Nizami Street and through Icherisheher (Old City), then continue to Baku Boulevard and Little Venice. Enjoy a funicular ride and photo stops around modern landmarks like the Heydar Aliyev Center, plus visits to the Car Museum and Miniature Book Museum.",
+        activities: ["Nizami Street and Old City (Icherisheher)", "Baku Boulevard promenade", "Little Venice canals", "Funicular ride", "Photo-stop at Heydar Aliyev Center", "Car Museum and Miniature Book Museum"]
+      },
+      {
+        day: 5,
+        title: "Gabala Tour – Waterfalls, Lake & Cable Car",
+        description: "After breakfast, drive to Gabala, a picturesque mountain town. Visit the Seven Beauties Waterfall and peaceful Nohur Lake, then head to the mountain resort for the Gabala cable car ride with panoramic Caucasus views. Return to Baku by evening.",
+        activities: ["Drive from Baku to Gabala", "Seven Beauties Waterfall", "Nohur Lake visit", "Gabala/Tufandag cable car ride", "Evening return to Baku"]
+      },
+      {
+        day: 6,
+        title: "Gobustan & Absheron Peninsula Experience",
+        description: "Today is dedicated to Azerbaijan’s unique natural and historical sites. Visit Gobustan National Park with its ancient rock carvings and Mud Volcanoes, then continue to the Absheron Peninsula for the Fire Temple (Ateshgah) and Burning Mountain (Yanardag), where natural flames burn from the hillside. Overnight in Baku.",
+        activities: ["Gobustan National Park", "Mud Volcanoes excursion", "Fire Temple (Ateshgah)", "Burning Mountain (Yanardag)"]
+      },
+      {
+        day: 7,
+        title: "Departure from Baku",
+        description: "Enjoy your final breakfast in Baku and some free time depending on your flight schedule. Check out from the hotel and transfer to Heydar Aliyev International Airport for your departure flight.",
+        activities: ["Breakfast at hotel", "Hotel check-out", "Private airport drop"]
+      }
+    ],
+    inclusions: [
+      "5 nights stay in Baku (Park Side or similar) on breakfast basis.",
+      "1 night stay in Shahdag (Deluxe Park Gusar or similar) with breakfast.",
+      "Daily breakfast at the hotels.",
+      "All tours and transfers on private basis.",
+      "Professional English-speaking driver.",
+      "Airport pickup and drop from Heydar Aliyev International Airport.",
+      "Sightseeing and entry/ticket charges for: Shahdag Coaster, Shahdag Cable Car, funicular ride, Little Venice, Fire Temple (Ateshgah), Burning Mountain (Yanardag), Gobustan + Mud Volcanoes, and Gabala Cable Car as per itinerary."
+    ],
+    exclusions: [
+      "International and domestic flight tickets.",
+      "Visa fees and processing charges.",
+      "Lunches, dinners, snacks, and beverages not mentioned in the meal plan.",
+      "Early check-in or late check-out at hotels.",
+      "Personal expenses such as laundry, minibar, and phone calls.",
+      "Travel, medical, or health insurance.",
+      "Optional tours, extra activities, and additional rides beyond inclusions.",
+      "Tips for driver, hotel staff, and guide.",
+      "Anything not specifically mentioned in the inclusions."
+    ],
+    accommodation: "5 nights in Baku at Park Side and 1 night in Shahdag at Deluxe Park Gusar, or similar hotel combination on double sharing.",
+    transportation: "Private air-conditioned vehicle with English-speaking driver for all airport transfers, intercity journeys, and sightseeing.",
+    meals: "Breakfast only",
+    best_time: "March to June and September to November for pleasant temperatures in both Baku and Shahdag regions.",
+    weather: "Mild to warm in Baku, cooler in the mountains around Shahdag; winter months can be cold and snowy in higher altitudes.",
+    visa_requirements: "Visa required for most nationalities; travelers must obtain an Azerbaijan visa/e-visa before arrival as per current regulations.",
+    payment_terms: "30% advance to confirm; balance due before check-in or as per voucher",
+    cancellation_policy: "Free cancellation up to 15 days prior; 50% between 8–14 days; no refund within 7 days",
+    images: [
+      "/images/baku1.jpg",
+      "/images/gobustan1.jpg",
+      "/images/gabala.jpeg",
+      "/images/shahdag1.webp",
+      "/images/shahdag2.jpg",
+      "/images/absheron.jpg",
+    ],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   }
 ]
 
@@ -821,7 +932,7 @@ export function getToursByType(type: string) {
 
 export function searchTours(query: string) {
   const lowercaseQuery = query.toLowerCase()
-  return TOURS.filter(tour => 
+  return TOURS.filter(tour =>
     tour.title.toLowerCase().includes(lowercaseQuery) ||
     tour.location.toLowerCase().includes(lowercaseQuery) ||
     tour.country.toLowerCase().includes(lowercaseQuery) ||
