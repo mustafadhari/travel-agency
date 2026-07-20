@@ -74,11 +74,12 @@ export default function Navbar() {
       items: [
         { name: "Flight Tickets", path: "/flights" },
         { name: "Hotel Bookings", path: "/hotels" },
-        { name: "Visa Assistance", path: "/visa", hidden: true },
+        { name: "Visa Assistance", path: "/visa" },
         { name: "Tour Packages", path: "/tours" },
         { name: "Travel Insurance", path: "/travel-insurance" },
       ],
     },
+    { name: "Blog", path: "/blog" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ]

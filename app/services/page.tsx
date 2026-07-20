@@ -58,7 +58,6 @@ const services = [
     iconColor: "text-purple-600",
     link: "/visa",
     popular: false,
-    hidden: true, // keep data but hide from UI
   },
   {
     title: "Travel Insurance",
