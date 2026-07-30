@@ -113,7 +113,7 @@ export default async function DestinationPage({
                           </div>
                           <div className="mt-3 text-brand-teal font-bold">₹{tour.price} <span className="text-xs text-muted-foreground font-normal">per person</span></div>
                         </div>
-                      </li>
+                      </Link>
                     ))}
                   </div>
                 </div>
