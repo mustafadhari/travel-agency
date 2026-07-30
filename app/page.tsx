@@ -6,6 +6,7 @@ import PopularTours from "@/components/home/popular-tours"
 import TestimonialSlider from "@/components/home/testimonial-slider"
 import NewsletterSection from "@/components/home/newsletter-section"
 import FloatingCTA from "@/components/home/floating-cta"
+import AboutUsSection from "@/components/home/about-us-section"
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
         <HeroSection />
         <DestinationExplorer />
         <ExperienceShowcase />
+        <AboutUsSection />
         <PopularTours />
         <TestimonialSlider />
         <NewsletterSection />
