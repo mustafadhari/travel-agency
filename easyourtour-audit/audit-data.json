@@ -1,0 +1,179 @@
+{
+  "summary": {
+    "health_score": 34,
+    "business_type": "Travel Agency / Agency",
+    "top_findings": [
+      "Missing robots.txt and sitemap.xml files (Critical crawlability blockers)",
+      "No Schema.org structured data (JSON-LD) detected site-wide",
+      "Thin homepage content (~70 words of extracted text), lacking deep E-E-A-T signals",
+      "Missing self-referencing canonical tag on the homepage",
+      "No security headers (HSTS, X-Frame-Options, CSP, etc.) configured"
+    ],
+    "quick_wins": [
+      "Create and upload a basic robots.txt file with a pointer to sitemap.xml",
+      "Generate and submit a compliant XML sitemap via Google Search Console",
+      "Deploy self-referencing canonical tags in the <head> of every page",
+      "Configure Strict-Transport-Security (HSTS) and X-Frame-Options in NGINX",
+      "Implement the provided JSON-LD structured data for the TravelAgency and TouristTrip"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 28,
+      "what_works": [
+        "Clean, descriptive URL structure with no query parameters or redirect chains",
+        "Proper viewport configuration for mobile responsiveness",
+        "HTTPS correctly implemented with a valid SSL certificate",
+        "Traditional server-rendered HTML (non-SPA layout) - optimal for crawlability"
+      ],
+      "findings": [
+        {
+          "title": "Missing robots.txt file",
+          "severity": "Critical",
+          "description": "The site currently has no robots.txt file (404 status), meaning crawl bots receive no guidance or pathways, and the sitemap location is not declared.",
+          "recommendation": "Create a robots.txt file at the root with standard directives and a pointer to the XML sitemap."
+        },
+        {
+          "title": "Missing sitemap.xml file",
+          "severity": "Critical",
+          "description": "No XML sitemap is present on any common paths (sitemap.xml, sitemap_index.xml, sitemap-index.xml, etc.), meaning search engines must rely on slow, discovery-based link-following.",
+          "recommendation": "Generate an XML sitemap of all public URLs and submit it via Google Search Console."
+        },
+        {
+          "title": "Missing canonical tag",
+          "severity": "High",
+          "description": "No <link rel=\"canonical\"> tag was detected on the homepage, presenting a risk of duplicate content issues if similar content is served on other URL variants (e.g. non-www, HTTP, trailing slash).",
+          "recommendation": "Add a self-referencing canonical tag in the <head> of the homepage pointing to https://easyourtour.com/."
+        },
+        {
+          "title": "Missing essential security headers",
+          "severity": "High",
+          "description": "The server response does not contain critical security headers (HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, CSP), leaving the site vulnerable to common threats like clickjacking and MIME-sniffing.",
+          "recommendation": "Configure security headers directly in the server block (NGINX/Apache) or hosting platform configuration."
+        },
+        {
+          "title": "No IndexNow endpoint",
+          "severity": "Medium",
+          "description": "No IndexNow verification file or link tag is present, slowing down content discovery and indexation by non-Google search engines like Bing, Yandex, and Naver.",
+          "recommendation": "Generate an IndexNow API key, upload the verification text file, and include the indexnow link in the HTML header."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality & E-E-A-T",
+      "score": 30,
+      "what_works": [
+        "High information density in existing copy (0.9 out of 1.0)",
+        "Zero repetition or filler content detected in copy blocks",
+        "Clear, readable formatting with modern visual presentation",
+        "No evidence of low-quality AI content patterns"
+      ],
+      "findings": [
+        {
+          "title": "Thin content on the homepage",
+          "severity": "High",
+          "description": "The homepage contains only ~70 words of extracted text, which is significantly below the 500-word topical floor recommended for high-performing homepages.",
+          "recommendation": "Expand the homepage copy to 800-1,200 words covering services, detailed destination highlights, company story, and guest reviews."
+        },
+        {
+          "title": "Weak experience, expertise, and authority signals",
+          "severity": "High",
+          "description": "There is a severe lack of visible author bios, guide credentials, staff certifications, travel license disclosures, travel diaries, or co-branded partnerships.",
+          "recommendation": "Add certified guide profiles, display association logos (e.g., IATA, local travel license), and create a travel blog with first-hand guides."
+        },
+        {
+          "title": "Insufficient trust signals",
+          "severity": "Medium",
+          "description": "While the phone number and contact forms are available, there is no prominent physical address, secure booking badge, payment guarantee, or detailed refund and cancellation policy links.",
+          "recommendation": "Display a complete physical address and email in the footer; create dedicated 'About Us', 'Privacy Policy', and 'Cancellation/Refund Policy' pages with direct footer links."
+        },
+        {
+          "title": "Low AI search engine citation readiness",
+          "severity": "Medium",
+          "description": "The copy relies on generic marketing phrases (e.g., 'unforgettable guided tours') rather than structured, quotable facts and data tables that AI search engines (like ChatGPT or AI Overviews) can cite.",
+          "recommendation": "Insert unique data points, statistics, and precise package details (e.g. 'small-group tours limited to 8 guests', '3 nights at Fairmont Baku')."
+        }
+      ]
+    },
+    {
+      "name": "Schema Markup",
+      "score": 0,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "Complete absence of Schema.org structured data",
+          "severity": "Critical",
+          "description": "No structured data of any format (JSON-LD, Microdata, RDFa) was found, meaning search engines receive no machine-readable data about the travel agency, its destinations, packages, prices, or ratings.",
+          "recommendation": "Deploy valid JSON-LD scripts for WebSite, TravelAgency/Organization, TouristAttraction (destination pages), and TouristTrip + Offer + AggregateRating (tour pages)."
+        }
+      ]
+    },
+    {
+      "name": "Performance",
+      "score": 99,
+      "what_works": [
+        "Incredible mobile Lighthouse performance score of 99/100",
+        "Largest Contentful Paint (LCP) is 1.6 seconds, well within the green threshold (<2.5s)",
+        "Cumulative Layout Shift (CLS) is 0.03, showing outstanding visual stability (<0.1)",
+        "Extremely fast server response times (under 100ms)"
+      ],
+      "findings": [
+        {
+          "title": "Potential render-blocking resources",
+          "severity": "Low",
+          "description": "A few Next.js critical static files and Google woff2 fonts can cause minor blocking on slow networks. No preload tags are currently defined for non-Next critical assets.",
+          "recommendation": "Use rel=preload for crucial custom fonts and audit third-party script deferral periodically."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Create and upload a standard robots.txt file pointing to the sitemap.",
+          "Generate and submit a standard XML sitemap via GSC.",
+          "Deploy self-referencing canonical tags site-wide.",
+          "Configure standard security headers (HSTS, X-Frame-Options, etc.) on the server."
+        ]
+      },
+      {
+        "name": "Phase 2: Structured Data & Discovery",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Implement TravelAgency/Organization JSON-LD on the homepage.",
+          "Deploy TouristTrip + Offer + AggregateRating schemas on popular tour landing pages.",
+          "Add BreadcrumbList structured data to improve SERP breadcrumb pathways.",
+          "Generate and set up the IndexNow endpoint for faster Bing/Yandex indexation."
+        ]
+      },
+      {
+        "name": "Phase 3: Content Expansion & E-E-A-T",
+        "timeframe": "Month 2",
+        "items": [
+          "Expand the homepage text block from ~70 words to 800-1,200 words covering key services and destinations.",
+          "Add trust signals to the footer: a physical address, secure booking badge, and transparent policies.",
+          "Feature guide profiles and certified travel agency license numbers to showcase expertise.",
+          "Embed co-branded logos of reputable travel partnerships and travel association memberships."
+        ]
+      },
+      {
+        "name": "Phase 4: AI Citation & Monitoring",
+        "timeframe": "Ongoing",
+        "items": [
+          "Inject structured, quotable facts and data tables on tour pages to drive AI search engine citations.",
+          "Establish an active blog with first-hand travel guides and 'Travel Diaries' to signal real-world experience.",
+          "Monitor Google Search Console and Bing Webmaster Tools for indexation status and crawling crawl-rate.",
+          "Perform monthly Lighthouse audits to verify the 99/100 performance score remains stable."
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

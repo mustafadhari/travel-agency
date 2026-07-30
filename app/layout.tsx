@@ -21,8 +21,12 @@ const raleway = Raleway({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://easyourtour.com"),
   title: "EasYourTour - Make your Travel Easy & Affordable",
   description: "Find and book the best travel services at affordable prices",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/images/logo.png",
     shortcut: "/images/logo.png",
