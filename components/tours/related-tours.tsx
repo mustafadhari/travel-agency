@@ -3,7 +3,7 @@ import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { MapPin, Calendar, Star } from "lucide-react"
-import { getTours } from "@/lib/tours"
+import { getTours } from "@/lib/tours-server"
 import { formatINR } from "@/lib/utils"
 
 interface RelatedToursProps {

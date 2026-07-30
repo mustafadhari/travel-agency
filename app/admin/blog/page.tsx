@@ -411,8 +411,10 @@ export default function AdminBlogPage() {
                   <ArrowLeft className="w-4 h-4" />
                   <span className="text-sm hidden sm:inline">Home</span>
                 </Link>
-                <span className="text-slate-700 hidden sm:inline">|</span>
+                <span className="text-slate-700">|</span>
                 <span className="font-bold text-white text-sm sm:text-base">Blog Admin</span>
+                <span className="text-slate-700">|</span>
+                <Link href="/admin/tours" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Tours Admin</Link>
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <Link href="/blog" target="_blank"

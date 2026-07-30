@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
@@ -8,13 +8,25 @@ import { Slider } from "@/components/ui/slider"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { MapPin, Calendar, Users, Star } from "lucide-react"
-import { getTours } from "@/lib/tours"
 import { formatINR } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 
 export default function ToursPage() {
-  const allTours = getTours()
+  const [allTours, setAllTours] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch("/api/tours")
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setAllTours(data.tours)
+        }
+      })
+      .catch(err => console.error("Error fetching tours:", err))
+      .finally(() => setLoading(false))
+  }, [])
   
   // Filter states
   const [destination, setDestination] = useState("all")

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Calendar, Users, Clock, ChevronLeft, Star } from "lucide-react"
 import Link from "next/link"
 import { DESTINATIONS } from "@/lib/destinations"
-import { getTours } from "@/lib/tours"
+import { getTours } from "@/lib/tours-server"
 import RequestCallbackButton from "@/components/request-callback-button"
 
 export default async function DestinationPage({
