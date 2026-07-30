@@ -31,7 +31,13 @@ export const metadata: Metadata = {
     icon: "/images/logo.png",
     shortcut: "/images/logo.png",
     apple: "/images/logo.png"
-  }
+  },
+  links: [
+    {
+      rel: "indexnow",
+      href: "https://easyourtour.com/67602a43375837c43565b642efd14d60.txt"
+    }
+  ]
 }
 
 export default function RootLayout({
