@@ -9,15 +9,71 @@ import FloatingCTA from "@/components/home/floating-cta"
 
 export default function HomePage() {
   return (
-    <main>
-      <HeroSection />
-      <DestinationExplorer />
-      <ExperienceShowcase />
-      <PopularTours />
-      <TestimonialSlider />
-      <NewsletterSection />
-      {/* <FloatingCTA /> */}
-      {/* <InstagramFeed /> */}
-    </main>
+    <>
+      <main>
+        <HeroSection />
+        <DestinationExplorer />
+        <ExperienceShowcase />
+        <PopularTours />
+        <TestimonialSlider />
+        <NewsletterSection />
+        {/* <FloatingCTA /> */}
+        {/* <InstagramFeed /> */}
+      </main>
+
+      {/* JSON-LD Structured Data for TravelAgency */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TravelAgency",
+          "name": "EasYourTour",
+          "url": "https://easyourtour.com",
+          "logo": "https://easyourtour.com/images/logo.png",
+          "description": "Find and book the best travel services at affordable prices",
+          "telephone": "+91-9876543210",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Travel Street",
+            "addressLocality": "Mumbai",
+            "addressRegion": "Maharashtra",
+            "postalCode": "400001",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "19.0760",
+            "longitude": "72.8777"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "opens": "09:00",
+              "closes": "19:00"
+            }
+          ],
+          "areaServed": "IN",
+          "makesOffer": {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "TouristTrip"
+            }
+          },
+          "sameAs": [
+            "https://facebook.com/easyourtour",
+            "https://instagram.com/easyourtour",
+            "https://twitter.com/easyourtour"
+          ]
+        }, null, 2)}
+      </script>
+    </>
   )
 }

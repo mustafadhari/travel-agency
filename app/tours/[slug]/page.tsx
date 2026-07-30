@@ -28,119 +28,183 @@ export default async function TourPage({ params }: TourPageProps) {
   const isGroupTour = /group/i.test(tour.type || "")
 
   return (
-    <div className="container mx-auto px-4 pt-28 pb-12">
-      {/* Hero Section */}
-      <div className="mb-8">
-        <div className="relative h-96 rounded-2xl overflow-hidden mb-6">
-          <Image
-            src={tour.image}
-            alt={tour.title}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          <div className="absolute bottom-4 left-4 right-4 text-white">
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <Badge variant="outline" className="bg-white/20 backdrop-blur-sm border-white/10 text-white text-xs">
-                {tour.type}
-              </Badge>
-              {tour.featured && (
-                <Badge className="bg-brand-teal text-xs">Featured</Badge>
-              )}
-            </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 leading-tight">{tour.title}</h1>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm">
-              <div className="flex items-center">
-                <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
-                <span className="truncate">{tour.location}</span>
-              </div>
-              <div className="flex items-center">
-                <Calendar className="h-4 w-4 mr-1 flex-shrink-0" />
-                <span>{tour.duration}</span>
-              </div>
-              <div className="flex items-center">
-                <Star className="h-4 w-4 mr-1 fill-current flex-shrink-0" />
-                <span>{tour.rating} ({tour.reviews} reviews)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Pricing & Callback Section */}
-        <div className="lg:hidden mb-8">
-          <div className="space-y-4">
-            <TourPricing price={tour.price} isGroup={isGroupTour} />
-            <RequestCallbackButton 
-              group={isGroupTour} 
-              tourTitle={tour.title}
-              tourLocation={tour.location}
+    <>
+      <div className="container mx-auto px-4 pt-28 pb-12">
+        {/* Hero Section */}
+        <div className="mb-8">
+          <div className="relative h-96 rounded-2xl overflow-hidden mb-6">
+            <Image
+              src={tour.image}
+              alt={tour.title}
+              fill
+              className="object-cover"
+              priority
             />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Description */}
-            <Card>
-              <CardHeader>
-                <CardTitle>About This Tour</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">{tour.description}</p>
-              </CardContent>
-            </Card>
-
-            {/* Highlights */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Tour Highlights</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {tour.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="text-brand-teal mr-2">✓</span>
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Itinerary */}
-            <TourItinerary itinerary={tour.itinerary} />
-
-            {/* Inclusions & Exclusions */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <TourInclusions inclusions={tour.inclusions} />
-              <TourInclusions exclusions={tour.exclusions} isExclusions />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 text-white">
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <Badge variant="outline" className="bg-white/20 backdrop-blur-sm border-white/10 text-white text-xs">
+                  {tour.type}
+                </Badge>
+                {tour.featured && (
+                  <Badge className="bg-brand-teal text-xs">Featured</Badge>
+                )}
+              </div>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 leading-tight">{tour.title}</h1>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm">
+                <div className="flex items-center">
+                  <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
+                  <span className="truncate">{tour.location}</span>
+                </div>
+                <div className="flex items-center">
+                  <Calendar className="h-4 w-4 mr-1 flex-shrink-0" />
+                  <span>{tour.duration}</span>
+                </div>
+                <div className="flex items-center">
+                  <Star className="h-4 w-4 mr-1 fill-current flex-shrink-0" />
+                  <span>{tour.rating} ({tour.reviews} reviews)</span>
+                </div>
+              </div>
             </div>
-
-            {/* Essentials */}
-            <TourEssentials tour={tour} />
-            {/* Gallery */}
-            <TourGallery images={tour.images} />
           </div>
-          
-          {/* Desktop Sidebar */}
-          <div className="hidden lg:block space-y-6">
-            {/* Pricing */}
-            <TourPricing price={tour.price} isGroup={isGroupTour} />
-            <div className="mt-6">
-              <RequestCallbackButton 
-                group={isGroupTour} 
+
+          {/* Mobile Pricing & Callback Section */}
+          <div className="lg:hidden mb-8">
+            <div className="space-y-4">
+              <TourPricing price={tour.price} isGroup={isGroupTour} />
+              <RequestCallbackButton
+                group={isGroupTour}
                 tourTitle={tour.title}
                 tourLocation={tour.location}
               />
             </div>
           </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Main Content */}
+            <div className="lg:col-span-2 space-y-8">
+              {/* Description */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>About This Tour</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">{tour.description}</p>
+                </CardContent>
+              </Card>
+
+              {/* Highlights */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Tour Highlights</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {tour.highlights.map((highlight, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-brand-teal mr-2">✓</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Itinerary */}
+              <TourItinerary itinerary={tour.itinerary} />
+
+              {/* Inclusions & Exclusions */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <TourInclusions inclusions={tour.inclusions} />
+                <TourInclusions exclusions={tour.exclusions} isExclusions />
+              </div>
+
+              {/* Essentials */}
+              <TourEssentials tour={tour} />
+              {/* Gallery */}
+              <TourGallery images={tour.images} />
+            </div>
+
+            {/* Desktop Sidebar */}
+            <div className="hidden lg:block space-y-6">
+              {/* Pricing */}
+              <TourPricing price={tour.price} isGroup={isGroupTour} />
+              <div className="mt-6">
+                <RequestCallbackButton
+                  group={isGroupTour}
+                  tourTitle={tour.title}
+                  tourLocation={tour.location}
+                />
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Related Tours */}
+        <RelatedTours currentTourId={tour.id} />
       </div>
 
-      {/* Related Tours */}
-      <RelatedTours currentTourId={tour.id} />
-    </div>
+      {/* JSON-LD Structured Data for TouristTrip */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TouristTrip",
+          "name": tour.title,
+          "description": tour.description,
+          "url": `https://easyourtour.com/tours/${tour.slug}`,
+          "image": tour.image.startsWith('/')
+            ? `https://easyourtour.com${tour.image}`
+            : tour.image,
+          "destination": {
+            "@type": "Place",
+            "name": tour.location,
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": tour.country
+            }
+          },
+          "touristType": tour.type,
+          "duration": tour.duration_days ? `P${tour.duration_days}D` : "P1D",
+          "itinerary": tour.itinerary.map((day, index) => ({
+            "@type": "ItemList",
+            "position": index + 1,
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "thing": {
+                "@type": "TouristAttraction",
+                "name": day.title,
+                "description": day.description
+              }
+            }]
+          })),
+          "offers": {
+            "@type": "Offer",
+            "price": tour.price,
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock",
+            "validFrom": new Date().toISOString().split('T')[0],
+            "url": `https://easyourtour.com/tours/${tour.slug}`
+          },
+          "activity": tour.highlights.slice(0, 3).map(highlight => ({
+            "@type": "TouristAttraction",
+            "name": highlight
+          })),
+          "touristAudience": {
+            "@type": "Audience",
+            "audienceType": tour.max_participants >= 10 ? "Groups" : "Couples/Small Groups"
+          },
+          "review": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": tour.rating,
+              "bestRating": 5
+            },
+            "reviewCount": tour.reviews
+          }
+        }, null, 2)}
+      </script>
+    </>
   )
 }
