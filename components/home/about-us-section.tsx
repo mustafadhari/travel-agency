@@ -198,28 +198,28 @@ export default function AboutUsSection() {
             From the snow-capped peaks of the Himalayas to the tropical beaches of Southeast Asia, we offer
             expertly curated experiences in over 30 countries across five continents.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="h-[200px] overflow-hidden rounded-lg">
-              <img src="/images/destinations/collage1.jpg" alt="Destinations collage" className="w-full h-full object-cover" />
-            </div>
-            <div className="space-y-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Popular Regions</h3>
-              <div className="space-y-2">
-                <p className="flex items-center space-x-2 text-gray-600">
-                  <MapPin className="w-4 h-4 text-brand-teal" />India: Himalayas, Rajasthan, Kerala, Goa & More
-                </p>
-                <p className="flex items-center space-x-2 text-gray-600">
-                  <MapPin className="w-4 h-4 text-brand-teal" />Southeast Asia: Thailand, Vietnam, Bali, Cambodia
-                </p>
-                <p className="flex items-center space-x-2 text-gray-600">
-                  <MapPin className="w-4 h-4 text-brand-teal" />Europe: Italy, France, Spain, Switzerland, UK
-                </p>
-                <p className="flex items-center space-x-2 text-gray-600">
-                  <MapPin className="w-4 h-4 text-brand-teal" />Americas: USA, Canada, Peru, Costa Rica
-                </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="h-[300px] overflow-hidden rounded-lg">
+                <img src="/images/kerala6.jpg" alt="Destinations collage" className="w-full h-full object-cover" />
+              </div>
+              <div className="space-y-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Popular Regions</h3>
+                <div className="space-y-2">
+                  <p className="flex items-center space-x-2 text-gray-600">
+                    <MapPin className="w-4 h-4 text-brand-teal" />India: Himalayas, Rajasthan, Kerala, Goa & More
+                  </p>
+                  <p className="flex items-center space-x-2 text-gray-600">
+                    <MapPin className="w-4 h-4 text-brand-teal" />Southeast Asia: Thailand, Vietnam, Bali, Cambodia
+                  </p>
+                  <p className="flex items-center space-x-2 text-gray-600">
+                    <MapPin className="w-4 h-4 text-brand-teal" />Europe: Italy, France, Spain, Switzerland, UK
+                  </p>
+                  <p className="flex items-center space-x-2 text-gray-600">
+                    <MapPin className="w-4 h-4 text-brand-teal" />Americas: USA, Canada, Peru, Costa Rica
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
         </div>
 
         {/* Call to Action */}

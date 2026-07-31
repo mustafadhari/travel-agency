@@ -41,28 +41,16 @@ const values = [
 
 const team = [
   {
-    name: "Priya Sharma",
-    role: "Founder & CEO",
-    image: "👩‍💼",
-    description: "Passionate travel enthusiast with 10+ years in the industry"
-  },
-  {
-    name: "Rahul Patel",
-    role: "Head of Operations",
+    name: "Mustafa Dhariwala",
+    role: "Co-Founder",
     image: "👨‍💼",
-    description: "Expert in travel logistics and customer experience"
+    description: "Visionary leader with a passion for creating seamless travel experiences."
   },
   {
-    name: "Anita Desai",
-    role: "Travel Consultant",
-    image: "👩‍💻",
-    description: "Specialist in international destinations and visa services"
-  },
-  {
-    name: "Vikram Singh",
-    role: "Customer Success",
-    image: "👨‍💻",
-    description: "Dedicated to ensuring every traveler has an amazing experience"
+    name: "Aliasgar Bohra",
+    role: "Co-Founder",
+    image: "👨‍💼",
+    description: "Expert in travel operations and strategic partnerships."
   }
 ]
 
@@ -217,7 +205,7 @@ export default function AboutPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {team.map((member, index) => (
               <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardContent className="p-6">
@@ -277,7 +265,7 @@ export default function AboutPage() {
               </Button>
             </Link>
             <Link href="/contact">
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-navy font-display font-semibold px-8 py-4 text-lg">
+              <Button variant="outline" size="lg" className="bg-transparent border-white text-white hover:bg-white hover:text-brand-navy hover:border-brand-navy font-display font-semibold px-8 py-4 text-lg">
                 Contact Us
               </Button>
             </Link>
