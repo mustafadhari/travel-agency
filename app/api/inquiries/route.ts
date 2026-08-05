@@ -49,10 +49,7 @@ export async function POST(request: NextRequest) {
 
         if (!n8nResponse.ok) {
           console.error('N8N webhook failed:', await n8nResponse.text())
-          return NextResponse.json(
-            { error: 'Failed to process inquiry' },
-            { status: 500 }
-          )
+          // Still return success to user, but log the error
         }
       } catch (webhookError) {
         console.error('Error calling n8n webhook:', webhookError)

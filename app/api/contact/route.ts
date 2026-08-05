@@ -38,17 +38,22 @@ export async function POST(request: NextRequest) {
 
     // Send to n8n webhook if configured
     if (process.env.N8N_CONTACT_WEBHOOK_URL) {
-      const webhookResponse = await fetch(process.env.N8N_CONTACT_WEBHOOK_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      })
+      try {
+        const webhookResponse = await fetch(process.env.N8N_CONTACT_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        })
 
-      if (!webhookResponse.ok) {
-        console.error('Failed to send to n8n webhook:', webhookResponse.statusText)
-        // Still return success to user, but log the error
+        if (!webhookResponse.ok) {
+          console.error('Failed to send to n8n webhook:', webhookResponse.statusText)
+          // Still return success to user, but log the error
+        }
+      } catch (webhookError) {
+        console.error('Error calling n8n webhook (contact):', webhookError)
+        // Continue with success response even if webhook fetch throws
       }
     } else {
       // Log to console if webhook not configured

@@ -50,6 +50,10 @@
 }
 
 @layer base {
+  html {
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+  }
   * {
     @apply border-border;
   }

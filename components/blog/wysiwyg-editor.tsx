@@ -22,6 +22,8 @@ import {
   Check,
   UploadCloud,
   Loader2,
+  Table as TableIcon,
+  LayoutList,
 } from "lucide-react"
 
 interface WysiwygEditorProps {
@@ -224,6 +226,42 @@ export default function WysiwygEditor({ value, onChange, placeholder }: WysiwygE
     setImageDialog({ open: false, url: "", alt: "", caption: "", preview: false })
   }
 
+  // ── Table & TOC insertion ────────────────────────────────────────────────
+  const insertTable = () => {
+    restoreRange()
+    editorRef.current?.focus()
+    const tableHTML = `
+      <table border="1" style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr><th>Header 1</th><th>Header 2</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Data 1</td><td>Data 2</td></tr>
+          <tr><td>Data 3</td><td>Data 4</td></tr>
+        </tbody>
+      </table>
+      <p><br></p>
+    `
+    exec("insertHTML", tableHTML)
+  }
+
+  const insertTOC = () => {
+    restoreRange()
+    editorRef.current?.focus()
+    const tocHTML = `
+      <div class="toc-box">
+        <div class="toc-header">Table of Contents</div>
+        <div class="toc-intro">Jump to a section</div>
+        <div class="toc-grid">
+          <a href="#section-1" class="toc-link">1. Section 1</a>
+          <a href="#section-2" class="toc-link">2. Section 2</a>
+        </div>
+      </div>
+      <p><br></p>
+    `
+    exec("insertHTML", tocHTML)
+  }
+
   const ToolbarButton = ({
     onClick,
     active,
@@ -324,6 +362,15 @@ export default function WysiwygEditor({ value, onChange, placeholder }: WysiwygE
         </ToolbarButton>
         <ToolbarButton onClick={openImageDialog} title="Insert Image">
           <ImageIcon className="w-4 h-4" />
+        </ToolbarButton>
+        <Divider />
+
+        {/* Custom blocks */}
+        <ToolbarButton onClick={insertTable} title="Insert Table">
+          <TableIcon className="w-4 h-4" />
+        </ToolbarButton>
+        <ToolbarButton onClick={insertTOC} title="Insert Table of Contents">
+          <LayoutList className="w-4 h-4" />
         </ToolbarButton>
       </div>
 
@@ -566,6 +613,21 @@ export default function WysiwygEditor({ value, onChange, placeholder }: WysiwygE
         .wysiwyg-content figure { margin: 1.5rem 0; }
         .wysiwyg-content img { max-width: 100%; border-radius: 8px; }
         .wysiwyg-content strong { font-weight: 700; color: #f1f5f9; }
+        
+        /* Table Styles */
+        .wysiwyg-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem; overflow-x: auto; display: block; }
+        .wysiwyg-content th { background: #0f172a; color: #f1f5f9; padding: 0.75rem 1rem; text-align: left; font-weight: 700; border: 1px solid #334155; font-family: "Raleway", "Raleway Fallback", sans-serif; white-space: nowrap; }
+        .wysiwyg-content td { padding: 0.625rem 1rem; border: 1px solid #334155; vertical-align: top; }
+        .wysiwyg-content tr:nth-child(even) td { background: rgba(15,23,42,0.4); }
+        .wysiwyg-content tr:hover td { background: rgba(30,41,59,0.8); }
+
+        /* TOC Box Styles */
+        .wysiwyg-content .toc-box { background: linear-gradient(135deg, rgba(13,148,136,0.1) 0%, rgba(15,23,42,0.6) 100%); border: 1.5px solid #2dd4bf; border-radius: 16px; padding: 1.5rem 1.75rem; margin: 2rem 0 2.5rem; }
+        .wysiwyg-content .toc-header { font-family: "Raleway", "Raleway Fallback", sans-serif; font-size: 1.15rem; font-weight: 800; color: #2dd4bf; margin-bottom: 0.4rem; }
+        .wysiwyg-content .toc-intro { font-size: 0.9rem; color: #94a3b8; margin-bottom: 1rem; }
+        .wysiwyg-content .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; }
+        .wysiwyg-content .toc-link { display: block; background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 0.65rem 1rem; font-size: 0.875rem; color: #2dd4bf; font-family: "Lato", "Lato Fallback", sans-serif; font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
+        .wysiwyg-content .toc-link:hover { background: #0d9488; color: white; border-color: #2dd4bf; transform: translateY(-1px); }
       `}</style>
     </div>
   )

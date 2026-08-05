@@ -134,9 +134,9 @@ export default function AboutUsSection() {
             Trusted by Travelers Worldwide
           </h2>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="flex items-center space-x-3 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 flex items-center justify-center bg-brand-teal/10 rounded-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+              <div className="w-12 h-12 flex items-center justify-center bg-brand-teal/10 rounded-full flex-shrink-0">
                 <Award className="w-6 h-6 text-brand-teal" />
               </div>
               <div>
@@ -148,8 +148,8 @@ export default function AboutUsSection() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 flex items-center justify-center bg-brand-teal/10 rounded-full">
+            <div className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+              <div className="w-12 h-12 flex items-center justify-center bg-brand-teal/10 rounded-full flex-shrink-0">
                 <Heart className="w-6 h-6 text-brand-teal" />
               </div>
               <div>
@@ -161,8 +161,8 @@ export default function AboutUsSection() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 flex items-center justify-center bg-brand-teal/10 rounded-full">
+            <div className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+              <div className="w-12 h-12 flex items-center justify-center bg-brand-teal/10 rounded-full flex-shrink-0">
                 <Users className="w-6 h-6 text-brand-teal" />
               </div>
               <div>
@@ -174,8 +174,8 @@ export default function AboutUsSection() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 flex items-center justify-center bg-brand-teal/10 rounded-full">
+            <div className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+              <div className="w-12 h-12 flex items-center justify-center bg-brand-teal/10 rounded-full flex-shrink-0">
                 <Clock className="w-6 h-6 text-brand-teal" />
               </div>
               <div>
@@ -205,17 +205,21 @@ export default function AboutUsSection() {
               <div className="space-y-4">
                 <h3 className="font-semibold text-gray-900 mb-2">Popular Regions</h3>
                 <div className="space-y-2">
-                  <p className="flex items-center space-x-2 text-gray-600">
-                    <MapPin className="w-4 h-4 text-brand-teal" />India: Himalayas, Rajasthan, Kerala, Goa & More
+                  <p className="flex items-start space-x-2 text-gray-600">
+                    <MapPin className="w-5 h-5 text-brand-teal flex-shrink-0 mt-0.5" />
+                    <span>India: Himalayas, Rajasthan, Kerala, Goa & More</span>
                   </p>
-                  <p className="flex items-center space-x-2 text-gray-600">
-                    <MapPin className="w-4 h-4 text-brand-teal" />Southeast Asia: Thailand, Vietnam, Bali, Cambodia
+                  <p className="flex items-start space-x-2 text-gray-600">
+                    <MapPin className="w-5 h-5 text-brand-teal flex-shrink-0 mt-0.5" />
+                    <span>Southeast Asia: Thailand, Vietnam, Bali, Cambodia</span>
                   </p>
-                  <p className="flex items-center space-x-2 text-gray-600">
-                    <MapPin className="w-4 h-4 text-brand-teal" />Europe: Italy, France, Spain, Switzerland, UK
+                  <p className="flex items-start space-x-2 text-gray-600">
+                    <MapPin className="w-5 h-5 text-brand-teal flex-shrink-0 mt-0.5" />
+                    <span>Europe: Italy, France, Spain, Switzerland, UK</span>
                   </p>
-                  <p className="flex items-center space-x-2 text-gray-600">
-                    <MapPin className="w-4 h-4 text-brand-teal" />Americas: USA, Canada, Peru, Costa Rica
+                  <p className="flex items-start space-x-2 text-gray-600">
+                    <MapPin className="w-5 h-5 text-brand-teal flex-shrink-0 mt-0.5" />
+                    <span>Americas: USA, Canada, Peru, Costa Rica</span>
                   </p>
                 </div>
               </div>
