@@ -28,3 +28,24 @@ next-env.d.ts
 
 # claude
 .claude/
+
+# Documentation and guide files
+*.md
+
+# Data files that shouldn't be tracked
+data/*.json
+
+# Output and temporary files
+*.output
+
+# Configuration files that may contain local settings
+*.local.json
+
+# Strategy and implementation documents
+IMPLEMENTATION_SUMMARY.md
+DISTRIBUTION_STRATEGY.md
+BLOG_STRATEGY.md
+BLOG_CONTENT_GUIDE.md
+TABLE_OF_CONTENTS_IMPLEMENTATION.md
+ANCHOR_LINKS_GUIDE.md
+INDIA_BLOG_IMAGES_GUIDE.md

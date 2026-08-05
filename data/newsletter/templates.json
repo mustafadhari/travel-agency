@@ -1,0 +1,18 @@
+[
+  {
+    "id": "welcome",
+    "name": "Welcome Series",
+    "subject": "Welcome to EasyOurTour! 🌍",
+    "previewText": "Your journey to amazing travel experiences starts here",
+    "content": "# Welcome to EasyOurTour!\n\nThank you for subscribing to our newsletter! You're now part of our travel community and will receive:\n\n✅ Exclusive travel tips and destination guides\n✅ Special offers and early access to deals\n✅ Insider knowledge from our travel experts\n✅ Inspiration for your next adventure\n\n**What would you like to see first?**\n\n[Explore Our Blog](#) | [Browse Destinations](#) | [View Current Deals](#)\n\nStay tuned for our next issue!\n\nThe EasyOurTour Team",
+    "type": "welcome"
+  },
+  {
+    "id": "weekly-roundup",
+    "name": "Weekly Roundup",
+    "subject": "This Week in Travel: {{date}}",
+    "previewText": "New destinations, expert tips, and travel inspiration",
+    "content": "# This Week in Travel: {{date}}\n\nHi {{name}},\n\nHere's what's new this week at EasyOurTour:\n\n## 📖 Featured Article\n**{{featured_title}}**\n{{featured_excerpt}}\n[Read More](#)\n\n## 🌍 Destination Spotlight\n{{destination_name}}\n{{destination_description}}\n[Explore Now](#)\n\n## 💡 Travel Tip of the Week\n{{travel_tip}}\n\n## 🎁 Exclusive Offer\n{{offer_description}}\n[Claim Your Deal](#)\n\n**Follow us for daily inspiration:**\n[Facebook](#) | [Instagram](#) | [Twitter](#)\n\nSee you next week!\nThe EasyOurTour Team",
+    "type": "weekly"
+  }
+]

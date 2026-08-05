@@ -1,0 +1,122 @@
+[
+  {
+    "id": "query_1",
+    "query": "best time to visit Kerala",
+    "platform": "chatgpt",
+    "category": "destination",
+    "priority": "high",
+    "addedAt": "2026-08-04T19:14:16.642Z"
+  },
+  {
+    "id": "query_2",
+    "query": "luxury Rajasthan tour",
+    "platform": "chatgpt",
+    "category": "experience",
+    "priority": "high",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_3",
+    "query": "budget international trips from India",
+    "platform": "perplexity",
+    "category": "budget",
+    "priority": "medium",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_4",
+    "query": "hidden gems in Himachal Pradesh",
+    "platform": "google-ai",
+    "category": "destination",
+    "priority": "medium",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_5",
+    "query": "solo female travel India",
+    "platform": "chatgpt",
+    "category": "safety",
+    "priority": "high",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_6",
+    "query": "monsoon travel destinations India",
+    "platform": "perplexity",
+    "category": "seasonal",
+    "priority": "medium",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_7",
+    "query": "North vs South India travel",
+    "platform": "google-ai",
+    "category": "comparison",
+    "priority": "medium",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_8",
+    "query": "best adventure activities in India",
+    "platform": "bing-copilot",
+    "category": "adventure",
+    "priority": "medium",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_9",
+    "query": "luxury travel experiences India",
+    "platform": "chatgpt",
+    "category": "luxury",
+    "priority": "high",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_10",
+    "query": "family travel destinations India",
+    "platform": "perplexity",
+    "category": "family",
+    "priority": "medium",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_11",
+    "query": "cultural experiences in Rajasthan",
+    "platform": "google-ai",
+    "category": "culture",
+    "priority": "medium",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_12",
+    "query": "best time to visit Goa",
+    "platform": "bing-copilot",
+    "category": "destination",
+    "priority": "medium",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_13",
+    "query": "eco-friendly travel India",
+    "platform": "chatgpt",
+    "category": "sustainable",
+    "priority": "medium",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_14",
+    "query": "honeymoon destinations India",
+    "platform": "perplexity",
+    "category": "honeymoon",
+    "priority": "high",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  },
+  {
+    "id": "query_15",
+    "query": "best trekking routes Himalayas",
+    "platform": "google-ai",
+    "category": "adventure",
+    "priority": "high",
+    "addedAt": "2026-08-04T19:14:16.653Z"
+  }
+]

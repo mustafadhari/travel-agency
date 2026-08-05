@@ -7,6 +7,9 @@ import { useParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { ArrowLeft, Clock, Calendar, Tag, User, Share2, ChevronRight } from "lucide-react"
 import type { BlogPost } from "@/lib/blog-types"
+import { getAuthorById } from "@/lib/blog-authors"
+import { generateBlogPostSchema, generateBreadcrumbSchema } from "@/lib/blog-schema"
+import SocialShare from "@/components/social-share"
 
 function isHtmlContent(content: string): boolean {
   return /<[a-z][\s\S]*>/i.test(content)
@@ -49,7 +52,15 @@ export default function BlogPostPage() {
         const published = (data.posts as BlogPost[]).filter((p) => p.status === "published")
         const found = published.find((p) => p.slug === slug)
         if (found) {
-          setPost(found)
+          // Enhance post with author data and schema
+          const author = getAuthorById(found.author.id || 'easyourtour-team')
+          const postWithAuthor = {
+            ...found,
+            author: author,
+            schemaMarkup: generateBlogPostSchema({ ...found, author }),
+            breadcrumbSchema: generateBreadcrumbSchema(slug, found.title)
+          }
+          setPost(postWithAuthor)
           setRelated(published.filter((p) => p.id !== found.id && p.category === found.category).slice(0, 3))
         }
         setLoading(false)
@@ -131,7 +142,7 @@ export default function BlogPostPage() {
         <div className="flex flex-wrap items-center gap-5 text-sm text-gray-400 mb-10 pb-8 border-b border-gray-200 font-sans">
           <span className="flex items-center gap-2">
             <User className="w-4 h-4" />
-            <strong className="text-gray-700 font-display font-semibold">{post.author}</strong>
+            <strong className="text-gray-700 font-display font-semibold">{typeof post.author === 'string' ? post.author : post.author?.name}</strong>
           </span>
           <span className="flex items-center gap-2">
             <Calendar className="w-4 h-4" />
@@ -141,12 +152,12 @@ export default function BlogPostPage() {
             <Clock className="w-4 h-4" />
             {post.readTime} min read
           </span>
-          <button
-            onClick={handleShare}
-            className="ml-auto flex items-center gap-2 text-brand-teal hover:text-brand-navy font-display font-semibold transition-colors"
-          >
-            <Share2 className="w-4 h-4" /> Share
-          </button>
+          <div className="ml-auto">
+            <SocialShare
+              title={post.title}
+              className="justify-end"
+            />
+          </div>
         </div>
 
         {/* Content */}
@@ -225,15 +236,32 @@ export default function BlogPostPage() {
         .blog-content a:hover { color: #004677; }
         .blog-content hr { border: none; border-top: 2px solid #e5e7eb; margin: 2.5rem 0; }
         .blog-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
-        .blog-content th { background: #f1f5f9; padding: 0.625rem 1rem; text-align: left; font-weight: 700; border: 1px solid #e2e8f0; color: #004677; font-family: "Raleway", "Raleway Fallback", sans-serif; }
-        .blog-content td { padding: 0.625rem 1rem; border: 1px solid #e2e8f0; }
-        .blog-content tr:nth-child(even) { background: #f8fafc; }
+        .blog-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem; overflow-x: auto; display: block; }
+        .blog-content th { background: #004677; color: white; padding: 0.75rem 1rem; text-align: left; font-weight: 700; border: 1px solid #004677; font-family: "Raleway", "Raleway Fallback", sans-serif; white-space: nowrap; }
+        .blog-content td { padding: 0.625rem 1rem; border: 1px solid #e2e8f0; vertical-align: top; }
+        .blog-content tr:nth-child(even) td { background: #f8fafc; }
+        .blog-content tr:hover td { background: #eff6ff; }
         .blog-content figure { margin: 1.5rem 0; text-align: center; }
         .blog-content figure img { max-width: 100%; max-height: 480px; object-fit: cover; display: block; margin: 0 auto; border-radius: 12px; }
         .blog-content figcaption { padding: 0.5rem 1rem; font-size: 0.85rem; color: #6b7280; font-style: italic; text-align: center; }
         .blog-content img { max-width: 100%; border-radius: 12px; margin: 1rem 0; }
         .blog-content strong { font-weight: 700; color: #111827; }
+        /* TOC Box */
+        .blog-content .toc-box { background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%); border: 1.5px solid #007A78; border-radius: 16px; padding: 1.5rem 1.75rem; margin: 2rem 0 2.5rem; }
+        .blog-content .toc-header { font-family: "Raleway", "Raleway Fallback", sans-serif; font-size: 1.15rem; font-weight: 800; color: #004677; margin-bottom: 0.4rem; }
+        .blog-content .toc-intro { font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem; }
+        .blog-content .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; }
+        .blog-content .toc-link { display: block; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 1rem; font-size: 0.875rem; color: #004677 !important; font-family: "Lato", "Lato Fallback", sans-serif; font-weight: 600; text-decoration: none !important; transition: all 0.2s ease; }
+        .blog-content .toc-link:hover { background: #007A78 !important; color: white !important; border-color: #007A78; transform: translateY(-1px); }
+        @media (max-width: 640px) { .blog-content .toc-grid { grid-template-columns: 1fr; } }
       `}</style>
+      {/* JSON-LD Structured Data */}
+      {post.schemaMarkup && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: post.schemaMarkup }} />
+      )}
+      {post.breadcrumbSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: post.breadcrumbSchema }} />
+      )}
     </div>
   )
 }
