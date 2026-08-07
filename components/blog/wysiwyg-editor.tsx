@@ -596,18 +596,18 @@ export default function WysiwygEditor({ value, onChange, placeholder }: WysiwygE
           color: #475569;
           pointer-events: none;
         }
-        .wysiwyg-content { font-family: "Lato", "Lato Fallback", sans-serif; }
+        .wysiwyg-content { font-family: var(--font-lato), sans-serif; }
         .wysiwyg-content h1,
         .wysiwyg-content h2,
-        .wysiwyg-content h3 { font-family: "Raleway", "Raleway Fallback", sans-serif; }
+        .wysiwyg-content h3 { font-family: var(--font-raleway), sans-serif; }
         .wysiwyg-content h1 { font-size: 2rem; font-weight: 700; margin: 1.5rem 0 0.75rem; color: #f1f5f9; }
-        .wysiwyg-content h2 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; color: #f1f5f9; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; font-family: "Raleway", "Raleway Fallback", sans-serif; }
+        .wysiwyg-content h2 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; color: #f1f5f9; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; font-family: var(--font-raleway), sans-serif; }
         .wysiwyg-content h3 { font-size: 1.2rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: #e2e8f0; }
         .wysiwyg-content p { margin-bottom: 1rem; }
         .wysiwyg-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         .wysiwyg-content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
         .wysiwyg-content li { margin-bottom: 0.25rem; }
-        .wysiwyg-content blockquote { border-left: 4px solid #0d9488; padding: 0.75rem 1rem; margin: 1rem 0; background: rgba(13,148,136,0.08); border-radius: 0 8px 8px 0; color: #94a3b8; font-style: italic; }
+        .wysiwyg-content blockquote { padding: 0.85rem 1.15rem; margin: 1.25rem 0; background: rgba(13,148,136,0.06); border-radius: 10px; color: #cbd5e1; font-style: italic; }
         .wysiwyg-content a { color: #2dd4bf; text-decoration: underline; }
         .wysiwyg-content hr { border: none; border-top: 1px solid #334155; margin: 1.5rem 0; }
         .wysiwyg-content figure { margin: 1.5rem 0; }
@@ -616,17 +616,17 @@ export default function WysiwygEditor({ value, onChange, placeholder }: WysiwygE
         
         /* Table Styles */
         .wysiwyg-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem; overflow-x: auto; display: block; }
-        .wysiwyg-content th { background: #0f172a; color: #f1f5f9; padding: 0.75rem 1rem; text-align: left; font-weight: 700; border: 1px solid #334155; font-family: "Raleway", "Raleway Fallback", sans-serif; white-space: nowrap; }
+        .wysiwyg-content th { background: #0f172a; color: #f1f5f9; padding: 0.75rem 1rem; text-align: left; font-weight: 700; border: 1px solid #334155; font-family: var(--font-raleway), sans-serif; white-space: nowrap; }
         .wysiwyg-content td { padding: 0.625rem 1rem; border: 1px solid #334155; vertical-align: top; }
         .wysiwyg-content tr:nth-child(even) td { background: rgba(15,23,42,0.4); }
         .wysiwyg-content tr:hover td { background: rgba(30,41,59,0.8); }
 
         /* TOC Box Styles */
-        .wysiwyg-content .toc-box { background: linear-gradient(135deg, rgba(13,148,136,0.1) 0%, rgba(15,23,42,0.6) 100%); border: 1.5px solid #2dd4bf; border-radius: 16px; padding: 1.5rem 1.75rem; margin: 2rem 0 2.5rem; }
-        .wysiwyg-content .toc-header { font-family: "Raleway", "Raleway Fallback", sans-serif; font-size: 1.15rem; font-weight: 800; color: #2dd4bf; margin-bottom: 0.4rem; }
+        .wysiwyg-content .toc-box { background: linear-gradient(135deg, rgba(13,148,136,0.1) 0%, rgba(15,23,42,0.6) 100%); border: 1px solid #2dd4bf; border-radius: 16px; padding: 1.5rem 1.75rem; margin: 2rem 0 2.5rem; }
+        .wysiwyg-content .toc-header { font-family: var(--font-raleway), sans-serif; font-size: 1.15rem; font-weight: 800; color: #2dd4bf; margin-bottom: 0.4rem; }
         .wysiwyg-content .toc-intro { font-size: 0.9rem; color: #94a3b8; margin-bottom: 1rem; }
         .wysiwyg-content .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; }
-        .wysiwyg-content .toc-link { display: block; background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 0.65rem 1rem; font-size: 0.875rem; color: #2dd4bf; font-family: "Lato", "Lato Fallback", sans-serif; font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
+        .wysiwyg-content .toc-link { display: block; background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 0.65rem 1rem; font-size: 0.875rem; color: #2dd4bf; font-family: var(--font-lato), sans-serif; font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
         .wysiwyg-content .toc-link:hover { background: #0d9488; color: white; border-color: #2dd4bf; transform: translateY(-1px); }
       `}</style>
     </div>

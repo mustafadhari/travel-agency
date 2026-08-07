@@ -375,7 +375,7 @@ export default function AdminBlogPage() {
                 <div className="grid grid-cols-2 gap-2">
                   {(["draft", "published"] as const).map((s) => (
                     <button key={s} onClick={() => setForm((f) => ({ ...f, status: s }))}
-                      className={`py-2 rounded-xl text-sm font-medium transition-all ${form.status === s ? (s === "published" ? "bg-teal-600 text-white" : "bg-amber-600 text-white") : "bg-slate-800 text-slate-400 hover:bg-slate-700"}`}>
+                      className={`py-2 rounded-xl text-sm font-medium transition-all ${form.status === s ? (s === "published" ? "bg-teal-600 text-white font-semibold" : "bg-amber-600 text-white font-semibold") : "bg-slate-800 text-white hover:bg-slate-700"}`}>
                       {s === "published" ? "Published" : "Draft"}
                     </button>
                   ))}
@@ -460,7 +460,7 @@ export default function AdminBlogPage() {
               <div className="flex gap-2">
                 {(["all", "published", "draft"] as const).map((s) => (
                   <button key={s} onClick={() => setFilterStatus(s)}
-                    className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all capitalize ${filterStatus === s ? "bg-teal-600 text-white" : "bg-slate-900 border border-slate-700 text-slate-400 hover:text-white"}`}>
+                    className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all capitalize ${filterStatus === s ? "bg-teal-600 text-white font-semibold" : "bg-slate-900 border border-slate-700 text-white hover:bg-slate-800"}`}>
                     {s}
                   </button>
                 ))}

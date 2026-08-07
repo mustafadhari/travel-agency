@@ -238,7 +238,8 @@ export default function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className={cn("rounded-full", !isSolid && "text-white hover:bg-white/20")}
+                aria-label="Open navigation menu"
+                className={cn("rounded-full min-h-[44px] min-w-[44px]", !isSolid && "text-white hover:bg-white/20")}
               >
                 <Menu className="h-5 w-5" />
               </Button>
@@ -345,6 +346,7 @@ export default function Navbar() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   placeholder="Search destinations, tours, experiences..."
+                  aria-label="Search destinations, tours, and experiences"
                   className="pl-10 pr-10 py-6 text-base rounded-full"
                   autoFocus
                 />

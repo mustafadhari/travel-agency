@@ -220,10 +220,10 @@ export default function BlogPostPage() {
       )}
 
       <style jsx global>{`
-        .blog-content { color: #374151; line-height: 1.85; font-size: 1.0625rem; font-family: "Lato", "Lato Fallback", sans-serif; }
+        .blog-content { color: #374151; line-height: 1.85; font-size: 1.0625rem; font-family: var(--font-lato), sans-serif; }
         .blog-content h1,
         .blog-content h2,
-        .blog-content h3 { font-family: "Raleway", "Raleway Fallback", sans-serif; font-weight: 700; color: #004677; }
+        .blog-content h3 { font-family: var(--font-raleway), sans-serif; font-weight: 700; color: #004677; }
         .blog-content h1 { font-size: 2rem; margin: 2rem 0 1rem; }
         .blog-content h2 { font-size: 1.5rem; margin: 2rem 0 0.75rem; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.5rem; }
         .blog-content h3 { font-size: 1.2rem; margin: 1.5rem 0 0.5rem; color: #007A78; }
@@ -231,13 +231,12 @@ export default function BlogPostPage() {
         .blog-content ul { list-style: disc; padding-left: 1.75rem; margin-bottom: 1.25rem; }
         .blog-content ol { list-style: decimal; padding-left: 1.75rem; margin-bottom: 1.25rem; }
         .blog-content li { margin-bottom: 0.4rem; }
-        .blog-content blockquote { border-left: 4px solid #007A78; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #f0faf9; border-radius: 0 12px 12px 0; color: #4b5563; font-style: italic; }
+        .blog-content blockquote { padding: 1.25rem 1.5rem; margin: 1.75rem 0; background: #f0faf9; border-radius: 12px; color: #374151; font-style: italic; }
         .blog-content a { color: #007A78; text-decoration: underline; }
         .blog-content a:hover { color: #004677; }
         .blog-content hr { border: none; border-top: 2px solid #e5e7eb; margin: 2.5rem 0; }
-        .blog-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
         .blog-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem; overflow-x: auto; display: block; }
-        .blog-content th { background: #004677; color: white; padding: 0.75rem 1rem; text-align: left; font-weight: 700; border: 1px solid #004677; font-family: "Raleway", "Raleway Fallback", sans-serif; white-space: nowrap; }
+        .blog-content th { background: #004677; color: white; padding: 0.75rem 1rem; text-align: left; font-weight: 700; border: 1px solid #004677; font-family: var(--font-raleway), sans-serif; white-space: nowrap; }
         .blog-content td { padding: 0.625rem 1rem; border: 1px solid #e2e8f0; vertical-align: top; }
         .blog-content tr:nth-child(even) td { background: #f8fafc; }
         .blog-content tr:hover td { background: #eff6ff; }
@@ -247,11 +246,11 @@ export default function BlogPostPage() {
         .blog-content img { max-width: 100%; border-radius: 12px; margin: 1rem 0; }
         .blog-content strong { font-weight: 700; color: #111827; }
         /* TOC Box */
-        .blog-content .toc-box { background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%); border: 1.5px solid #007A78; border-radius: 16px; padding: 1.5rem 1.75rem; margin: 2rem 0 2.5rem; }
-        .blog-content .toc-header { font-family: "Raleway", "Raleway Fallback", sans-serif; font-size: 1.15rem; font-weight: 800; color: #004677; margin-bottom: 0.4rem; }
+        .blog-content .toc-box { background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%); border: 1px solid #007A78; border-radius: 16px; padding: 1.5rem 1.75rem; margin: 2rem 0 2.5rem; }
+        .blog-content .toc-header { font-family: var(--font-raleway), sans-serif; font-size: 1.15rem; font-weight: 800; color: #004677; margin-bottom: 0.4rem; }
         .blog-content .toc-intro { font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem; }
         .blog-content .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; }
-        .blog-content .toc-link { display: block; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 1rem; font-size: 0.875rem; color: #004677 !important; font-family: "Lato", "Lato Fallback", sans-serif; font-weight: 600; text-decoration: none !important; transition: all 0.2s ease; }
+        .blog-content .toc-link { display: block; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 1rem; font-size: 0.875rem; color: #004677 !important; font-family: var(--font-lato), sans-serif; font-weight: 600; text-decoration: none !important; transition: all 0.2s ease; }
         .blog-content .toc-link:hover { background: #007A78 !important; color: white !important; border-color: #007A78; transform: translateY(-1px); }
         @media (max-width: 640px) { .blog-content .toc-grid { grid-template-columns: 1fr; } }
       `}</style>

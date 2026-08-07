@@ -23,11 +23,11 @@ export default function Footer() {
               tailored to your preferences and budget.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-gray-400 hover:text-brand-teal transition-colors">
+              <Link href="#" aria-label="Facebook" className="text-gray-400 hover:text-brand-teal transition-colors min-h-[44px] min-w-[44px] inline-flex items-center justify-center">
                 <Facebook size={20} />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="https://www.instagram.com/easyourtourr" target="_blank" className="text-gray-400 hover:text-brand-teal transition-colors">
+              <Link href="https://www.instagram.com/easyourtourr" target="_blank" aria-label="Instagram" className="text-gray-400 hover:text-brand-teal transition-colors min-h-[44px] min-w-[44px] inline-flex items-center justify-center">
                 <Instagram size={20} />
                 <span className="sr-only">Instagram</span>
               </Link>

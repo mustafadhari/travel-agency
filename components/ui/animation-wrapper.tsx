@@ -69,7 +69,7 @@ export function AnimationWrapper({
       case "zoom-in":
         return "animate-zoom-in"
       case "bounce":
-        return "animate-bounce"
+        return "animate-fade-in"
       default:
         return "animate-fade-in"
     }
@@ -78,7 +78,11 @@ export function AnimationWrapper({
   return (
     <div
       ref={ref}
-      className={cn(getAnimationClass(), "transition-all will-change-transform", className)}
+      className={cn(
+        getAnimationClass(),
+        "transition-all will-change-transform motion-reduce:animate-none motion-reduce:transition-none motion-reduce:opacity-100",
+        className
+      )}
       style={{
         animationDelay: `${delay}s`,
         animationDuration: `${duration}s`,

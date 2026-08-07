@@ -49,7 +49,7 @@ export function DestinationSuggestions({ query, onSelect, isVisible }: Destinati
     <div className="absolute z-50 w-full mt-1 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 shadow-xl max-h-60 overflow-y-auto">
       {loading && (
         <div className="p-3 text-center text-gray-500 dark:text-gray-400">
-          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-brand-teal mx-auto"></div>
+          <div className="animate-spin rounded-full h-4 w-4 border-2 border-brand-teal border-t-transparent mx-auto"></div>
         </div>
       )}
 

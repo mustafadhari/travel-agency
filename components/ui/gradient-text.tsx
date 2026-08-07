@@ -12,13 +12,12 @@ interface GradientTextProps {
 export function GradientText({
   children,
   className,
-  from = "from-blue-500",
-  to = "to-teal-400",
-  direction = "to-r",
+  from = "text-brand-teal",
+  to = "",
 }: GradientTextProps) {
   return (
     <span
-      className={cn("bg-clip-text text-transparent bg-gradient-to-r", `bg-gradient-${direction}`, from, to, className)}
+      className={cn("font-bold text-brand-teal dark:text-teal-400", className)}
     >
       {children}
     </span>

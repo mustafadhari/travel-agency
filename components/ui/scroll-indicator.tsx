@@ -42,17 +42,19 @@ export function ScrollIndicator({ className, color = "white", size = 24, targetI
   }
 
   return (
-    <div
+    <button
+      type="button"
+      aria-label="Scroll to content"
       className={cn(
-        "flex flex-col items-center transition-opacity duration-300 cursor-pointer",
-        isVisible ? "opacity-100" : "opacity-0",
+        "flex flex-col items-center transition-opacity duration-300 cursor-pointer bg-transparent border-0 p-0 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:ring-offset-2 rounded-full",
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none",
         className,
       )}
       onClick={handleClick}
     >
-      <div className="animate-bounce">
-        <ChevronDown size={size} color={color} />
+      <div className="animate-pulse-slow motion-reduce:animate-none">
+        <ChevronDown size={size} color={color} aria-hidden="true" />
       </div>
-    </div>
+    </button>
   )
 }

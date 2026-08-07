@@ -974,7 +974,7 @@ export default function AdminToursPage() {
                         {tour.duration}
                       </div>
                       {tour.featured && (
-                        <div className="absolute top-3 right-3 bg-amber-500 text-slate-950 font-bold text-xxs tracking-wider uppercase px-2 py-0.5 rounded-full shadow">
+                        <div className="absolute top-3 right-3 bg-amber-400 text-amber-950 font-bold text-xxs tracking-wider uppercase px-2.5 py-0.5 rounded-full shadow">
                           Featured
                         </div>
                       )}
